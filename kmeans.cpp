@@ -55,6 +55,7 @@ void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* c
 // for each point, find the nearest center
 
   //std::cout<<"finding points\n";
+  int pointnr = 0;
   for (std::vector<Point>::iterator it = points->begin();
        it != points->end(); ++it) {
    
@@ -74,8 +75,10 @@ void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* c
     centerid++;  
    }
    //std::cout<<p.x<<" "<<p.y<<" "<<p.minDist<<" "<<p.cluster<<"\n";
+   points->at(pointnr).minDist = p.minDist; 
+   points->at(pointnr).cluster = p.cluster; 
+   pointnr++;
   }
- //return centers;
 }
 
 
@@ -117,14 +120,24 @@ std::vector<double> sumX, sumY;
 
  } 
 
- std::cout<<" Old Centers "<<std::endl;
  int centerid = 0;
  for (std::vector<Point>::iterator c = centers->begin();
       c != centers->end(); ++c) {
   
-   std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
-    }
- centerid++;  
+  //std::cout<<" Old Centers "<<std::endl;
+  //std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
+
+  //std::cout<<sumX[centerid]<<"\n";
+  //std::cout<<sumY[centerid]<<"\n";
+
+  // std::cout<<" New Centers "<<std::endl;
+  // centers->at(centerid).x = sumX[centerid]/nPoints[centerid];
+  // centers->at(centerid).y = sumY[centerid]/nPoints[centerid];
+  // std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
+
+  centerid++;  
+
+ }
   
 }
 
@@ -153,7 +166,28 @@ int main()
 
  std::vector<Point> centerlist = initCenters(&pointlist, ncenters);
 
+ std::cout<<" Centers init-ed\n";
+ for (int i = 0; i < ncenters; ++i) {
+   std::cout << centerlist[i].x << " " << centerlist[i].y <<std::endl;
+ }
+
+ std::cout<<" Unassociated points\n";
+ for (std::vector<Point>::iterator it = pointlist.begin();
+      it != pointlist.end(); ++it) {
+  Point p = *it;
+  std::cout<<p.x<<" "<<p.y<<" "<<p.minDist<<" "<<p.cluster<<"\n";
+  
+  }
+
  associatePointsToClusters(&pointlist, &centerlist);
+
+ std::cout<<" Associated points\n";
+ for (std::vector<Point>::iterator it = pointlist.begin();
+      it != pointlist.end(); ++it) {
+  Point p = *it;
+  std::cout<<p.x<<" "<<p.y<<" "<<p.minDist<<" "<<p.cluster<<"\n";
+  
+  }
 
  recalculateCenters(&pointlist, &centerlist);
 
