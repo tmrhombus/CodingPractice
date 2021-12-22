@@ -82,15 +82,18 @@ void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* c
 }
 
 
-std::vector<Point> initCenters(std::vector<Point>* points, int ncenters){
+void initCenters(std::vector<Point>* pointlist, int ncenters, std::vector<Point>* oldcenterlist, std::vector<Point>* newcenterlist){
+//std::vector<Point> initCenters(std::vector<Point>* points, int ncenters){
  // initialize centers
  //srand(time(0));  // need to set the random seed
- std::vector<Point> centers;
+ //std::vector<Point> centers;
  for (int i = 0; i < ncenters; ++i) {
-     centers.push_back(points->at(rand() % points->size() ));
+     oldcenterlist->push_back( Point(__DBL_MAX__,__DBL_MAX__) );
+     newcenterlist->push_back(pointlist->at(rand() % pointlist->size() ));
+     //centers.push_back(points->at(rand() % points->size() ));
      //centers.push_back(points->at(i));
  }
- return centers;
+ //return centers;
 }
 
 
@@ -124,16 +127,16 @@ std::vector<double> sumX, sumY;
  for (std::vector<Point>::iterator c = centers->begin();
       c != centers->end(); ++c) {
   
-  //std::cout<<" Old Centers "<<std::endl;
-  //std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
+  std::cout<<" Old Center "<<std::endl;
+  std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
 
   //std::cout<<sumX[centerid]<<"\n";
   //std::cout<<sumY[centerid]<<"\n";
 
-  // std::cout<<" New Centers "<<std::endl;
-  // centers->at(centerid).x = sumX[centerid]/nPoints[centerid];
-  // centers->at(centerid).y = sumY[centerid]/nPoints[centerid];
-  // std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
+  std::cout<<" New Center "<<std::endl;
+  centers->at(centerid).x = sumX[centerid]/nPoints[centerid];
+  centers->at(centerid).y = sumY[centerid]/nPoints[centerid];
+  std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
 
   centerid++;  
 
@@ -164,12 +167,15 @@ int main()
   //  std::cout<< b.x <<std::endl;
   //  std::cout<< a.x << ", "<< a.y << ", "<< a.cluster << std::endl;
 
- std::vector<Point> centerlist = initCenters(&pointlist, ncenters);
+ std::vector<Point> oldcenterlist;
+ std::vector<Point> newcenterlist;
+ //std::vector<Point> newcenterlist = initCenters(&pointlist, ncenters, &oldcenterlist, &newcenterlist);
+ initCenters(&pointlist, ncenters, &oldcenterlist, &newcenterlist);
 
- std::cout<<" Centers init-ed\n";
- for (int i = 0; i < ncenters; ++i) {
-   std::cout << centerlist[i].x << " " << centerlist[i].y <<std::endl;
- }
+ //std::cout<<" Centers init-ed\n";
+ //for (int i = 0; i < ncenters; ++i) {
+ //  std::cout << newcenterlist[i].x << " " << newcenterlist[i].y <<std::endl;
+ //}
 
  std::cout<<" Unassociated points\n";
  for (std::vector<Point>::iterator it = pointlist.begin();
@@ -179,7 +185,7 @@ int main()
   
   }
 
- associatePointsToClusters(&pointlist, &centerlist);
+ associatePointsToClusters(&pointlist, &newcenterlist);
 
  std::cout<<" Associated points\n";
  for (std::vector<Point>::iterator it = pointlist.begin();
@@ -189,11 +195,11 @@ int main()
   
   }
 
- recalculateCenters(&pointlist, &centerlist);
+ recalculateCenters(&pointlist, &newcenterlist);
 
- //std::cout << centerlist.size() <<std::endl;
+ //std::cout << newcenterlist.size() <<std::endl;
  for (int i = 0; i < ncenters; ++i) {
-   std::cout << centerlist[i].x << " " << centerlist[i].y <<std::endl;
+   std::cout << newcenterlist[i].x << " " << newcenterlist[i].y <<std::endl;
  }
 
 }
