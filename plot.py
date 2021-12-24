@@ -10,13 +10,15 @@ sns.scatterplot(x=df["Some Random X"],
 plt.title("Scatterplot of X and Y")
 
 # After clustering
-plt.figure()
-df = pd.read_csv("output.csv")
-sns.scatterplot(x=df.x, y=df.y, 
-                hue=df.c, 
-                palette=sns.color_palette("hls", n_colors=2))
-plt.xlabel("Some Random X")
-plt.ylabel("Some Random Y")
-plt.title("Clustered: X vs Y")
-
+for x in range(0, 6):
+ plt.figure()
+ filename = "outfile"+str(x)+".csv" 
+ df = pd.read_csv(filename)
+ sns.scatterplot(x=df.x, y=df.y, 
+                 hue=df.c, 
+                 palette=sns.color_palette("hls", n_colors=2))
+ plt.xlabel("Some Random X")
+ plt.ylabel("Some Random Y")
+ plt.title("Clustered: X vs Y")
+ 
 plt.show()
