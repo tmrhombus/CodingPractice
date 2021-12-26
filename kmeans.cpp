@@ -52,42 +52,42 @@ std::vector<Point> getPointsFromCSV(std::string filename) {
 void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* centers)
 {
 
-// for each point, find the nearest center
+ // for each point, find the nearest center
 
-  //std::cout<<"finding points\n";
-  int pointnr = 0;
-  for (std::vector<Point>::iterator it = points->begin();
-       it != points->end(); ++it) {
+ //std::cout<<"finding points\n";
+ int pointnr = 0;
+ for (std::vector<Point>::iterator it = points->begin();
+      it != points->end(); ++it) {
+  
+  points->at(pointnr).minDist = __DBL_MAX__; 
+  //std::cout<<"before assigned\n";
+  //std::cout<<points->at(pointnr).x<<" "<<
+  //           points->at(pointnr).y<<" "<<
+  //           points->at(pointnr).minDist<<" "<<
+  //           points->at(pointnr).cluster<<"\n";
+
+  int centerid = 0;
+  for (std::vector<Point>::iterator c = centers->begin();
+       c != centers->end(); ++c) {
    
-   points->at(pointnr).minDist = __DBL_MAX__; 
-   //std::cout<<"before assigned\n";
-   //std::cout<<points->at(pointnr).x<<" "<<
-   //           points->at(pointnr).y<<" "<<
-   //           points->at(pointnr).minDist<<" "<<
-   //           points->at(pointnr).cluster<<"\n";
-
-   int centerid = 0;
-   for (std::vector<Point>::iterator c = centers->begin();
-        c != centers->end(); ++c) {
-    
-    double dist = points->at(pointnr).dist2(centers->at(centerid));
-    std::cout<<"dist to: "<<centers->at(centerid).x<<","<<
-                            centers->at(centerid).y<<" : "<<
-                            dist<<"\n";
-    if(dist < points->at(pointnr).minDist){
-     points->at(pointnr).minDist=dist;
-     points->at(pointnr).cluster=centerid;
-    }
-    centerid++;  
+   double dist = points->at(pointnr).dist2(centers->at(centerid));
+   std::cout<<"dist to: "<<centers->at(centerid).x<<","<<
+                           centers->at(centerid).y<<" : "<<
+                           dist<<"\n";
+   if(dist < points->at(pointnr).minDist){
+    points->at(pointnr).minDist=dist;
+    points->at(pointnr).cluster=centerid;
    }
-   //std::cout<<"after assigned\n";
-   //std::cout<<points->at(pointnr).x<<" "<<
-   //           points->at(pointnr).y<<" "<<
-   //           points->at(pointnr).minDist<<" "<<
-   //           points->at(pointnr).cluster<<"\n";
-   //std::cout<<"--------------\n";
-   pointnr++;
+   centerid++;  
   }
+  //std::cout<<"after assigned\n";
+  //std::cout<<points->at(pointnr).x<<" "<<
+  //           points->at(pointnr).y<<" "<<
+  //           points->at(pointnr).minDist<<" "<<
+  //           points->at(pointnr).cluster<<"\n";
+  //std::cout<<"--------------\n";
+  pointnr++;
+ }
 }
 
 
@@ -122,7 +122,7 @@ void recalculateCenters(std::vector<Point>* points, std::vector<Point>* centers)
   sumX[p.cluster] += p.x;
   sumY[p.cluster] += p.y;
 
-  p.minDist = __DBL_MAX__;
+  //p.minDist = __DBL_MAX__;
 
  } 
 
@@ -130,16 +130,16 @@ void recalculateCenters(std::vector<Point>* points, std::vector<Point>* centers)
  for (std::vector<Point>::iterator c = centers->begin();
       c != centers->end(); ++c) {
   
-  std::cout<<" Old Center "<<std::endl;
-  std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
+  //std::cout<<" Old Center "<<std::endl;
+  //std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
 
   //std::cout<<sumX[centerid]<<"\n";
   //std::cout<<sumY[centerid]<<"\n";
 
-  std::cout<<" New Center "<<std::endl;
   centers->at(centerid).x = sumX[centerid]/nPoints[centerid];
   centers->at(centerid).y = sumY[centerid]/nPoints[centerid];
-  std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
+  //std::cout<<" New Center "<<std::endl;
+  //std::cout<<centers->at(centerid).x<<","<<centers->at(centerid).y<<"\n";
 
   centerid++;  
 
@@ -210,7 +210,7 @@ int main()
   
   for (std::vector<Point>::iterator it = pointlist.begin(); 
        it != pointlist.end(); ++it) {
-      myfile << it->x << "," << it->y << "," << it->cluster << std::endl;
+   myfile << it->x << "," << it->y << "," << it->cluster << std::endl;
   }
   myfile.close();
 
@@ -220,7 +220,7 @@ int main()
   
   for (std::vector<Point>::iterator it = newcenterlist.begin(); 
        it != newcenterlist.end(); ++it) {
-      myfile << it->x << "," << it->y << std::endl;
+   myfile << it->x << "," << it->y << std::endl;
   }
   myfile.close();
 
