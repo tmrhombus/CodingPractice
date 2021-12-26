@@ -3,9 +3,8 @@
 #include <ctime>     // for a random seed
 #include <fstream>   // for file-reading
 #include <iostream>  // for stdio
-// #include <sstream>   // for file-reading
 #include <vector>
-#include <cmath>  // for abs
+#include <cmath>     // for abs
 
 struct Point {
     double x, y;     // coordinates
@@ -60,43 +59,51 @@ void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* c
   for (std::vector<Point>::iterator it = points->begin();
        it != points->end(); ++it) {
    
-   Point p = *it;
-   //std::cout<<p.x<<" "<<p.y<<" "<<p.minDist<<" "<<p.cluster<<"\n";
-   
+   points->at(pointnr).minDist = __DBL_MAX__; 
+   //std::cout<<"before assigned\n";
+   //std::cout<<points->at(pointnr).x<<" "<<
+   //           points->at(pointnr).y<<" "<<
+   //           points->at(pointnr).minDist<<" "<<
+   //           points->at(pointnr).cluster<<"\n";
+
    int centerid = 0;
    for (std::vector<Point>::iterator c = centers->begin();
         c != centers->end(); ++c) {
     
-    double dist = p.dist2(centers->at(centerid));
-    //std::cout<<"dist "<<dist<<"\n";
-    if(dist < p.minDist){
-     p.minDist=dist;
-     p.cluster=centerid;
+    double dist = points->at(pointnr).dist2(centers->at(centerid));
+    std::cout<<"dist to: "<<centers->at(centerid).x<<","<<
+                            centers->at(centerid).y<<" : "<<
+                            dist<<"\n";
+    if(dist < points->at(pointnr).minDist){
+     points->at(pointnr).minDist=dist;
+     points->at(pointnr).cluster=centerid;
     }
     centerid++;  
    }
-   //std::cout<<p.x<<" "<<p.y<<" "<<p.minDist<<" "<<p.cluster<<"\n";
-   points->at(pointnr).minDist = p.minDist; 
-   points->at(pointnr).cluster = p.cluster; 
+   //std::cout<<"after assigned\n";
+   //std::cout<<points->at(pointnr).x<<" "<<
+   //           points->at(pointnr).y<<" "<<
+   //           points->at(pointnr).minDist<<" "<<
+   //           points->at(pointnr).cluster<<"\n";
+   //std::cout<<"--------------\n";
    pointnr++;
   }
 }
 
 
 void initCenters(std::vector<Point>* pointlist, int ncenters, std::vector<Point>* oldcenterlist, std::vector<Point>* newcenterlist){
- //srand(time(0));  // need to set the random seed
+ //srand(time(0));  // set the seed
  for (int i = 0; i < ncenters; ++i) {
      oldcenterlist->push_back( Point(__DBL_MAX__,__DBL_MAX__) );
      newcenterlist->push_back(pointlist->at(rand() % pointlist->size() ));
-     //newcenterlist.push_back(points->at(rand() % points->size() ));
  }
 }
 
 
 void recalculateCenters(std::vector<Point>* points, std::vector<Point>* centers){
 
-std::vector<int> nPoints;
-std::vector<double> sumX, sumY;
+ std::vector<int> nPoints;
+ std::vector<double> sumX, sumY;
 
  // Initialise with zeroes
  for (int i = 0; i < centers->size(); ++i) {
@@ -197,7 +204,7 @@ int main()
 
   //write to file
   std::ofstream myfile;
-  std::string filename = "outfile"+std::to_string(iterationnr)+".csv";
+  std::string filename = "./plots/outfile_points"+std::to_string(iterationnr)+".csv";
   myfile.open(filename);
   myfile << "x,y,c" << std::endl;
   
@@ -207,6 +214,15 @@ int main()
   }
   myfile.close();
 
+  filename = "./plots/outfile_centers"+std::to_string(iterationnr)+".csv";
+  myfile.open(filename);
+  myfile << "x,y" << std::endl;
+  
+  for (std::vector<Point>::iterator it = newcenterlist.begin(); 
+       it != newcenterlist.end(); ++it) {
+      myfile << it->x << "," << it->y << std::endl;
+  }
+  myfile.close();
 
   if(std::abs(diffX+diffY) < 0.1) break;
 
