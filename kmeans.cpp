@@ -71,9 +71,9 @@ void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* c
        c != centers->end(); ++c) {
    
    double dist = points->at(pointnr).dist2(centers->at(centerid));
-   std::cout<<"dist to: "<<centers->at(centerid).x<<","<<
-                           centers->at(centerid).y<<" : "<<
-                           dist<<"\n";
+   //std::cout<<"dist to: "<<centers->at(centerid).x<<","<<
+   //                        centers->at(centerid).y<<" : "<<
+   //                        dist<<"\n";
    if(dist < points->at(pointnr).minDist){
     points->at(pointnr).minDist=dist;
     points->at(pointnr).cluster=centerid;
@@ -153,7 +153,8 @@ int main()
 
  int ncenters = 2;
 
- std::string filename = "twoblobs.csv";
+ std::string filename = "twogauss.csv";
+ //std::string filename = "twoblobs.csv";
 
  std::vector<Point> pointlist =  getPointsFromCSV(filename);
 
@@ -199,8 +200,8 @@ int main()
     diffX += newcenterlist[i].x - oldcenterlist[i].x;
     diffY += newcenterlist[i].y - oldcenterlist[i].y;
   }
-  std::cout<<" Diffs "<<diffX<<" "<<diffY<<"\n";
-  std::cout<<std::abs(diffX+diffY)<<"\n";
+  //std::cout<<" Diffs "<<diffX<<" "<<diffY<<"\n";
+  //std::cout<<std::abs(diffX+diffY)<<"\n";
 
   //write to file
   std::ofstream myfile;
@@ -234,6 +235,16 @@ int main()
  iterationnr++;
 
  }
+
+ std::cout<<"----------------------\n";
+ std::cout<<"Final Centers:\n";
+ for (std::vector<Point>::iterator it = newcenterlist.begin(); 
+      it != newcenterlist.end(); ++it) {
+  std::cout << " (" << it->x << "," << it->y << ") \n"; 
+ }
+ std::cout<<"Iterations: "<<iterationnr<<"\n";
+ std::cout<<"----------------------\n";
+
 
 }
 
