@@ -51,10 +51,10 @@ std::vector<float> incrementinterest( int steps, int groups,
 
 int main(){
 
- float initialbalance = 1000;
- int   dayspergroup = 10;
- int   groups = 3; 
- float rate = 1.01;
+ float initialbalance = 2000;
+ int   dayspergroup = 60;
+ int   groups = 2; 
+ float rate = 1.02;
  float jeffspercent = 0.05;
 
  std::vector<float> outputs = incrementinterest( dayspergroup, groups, 
@@ -62,6 +62,12 @@ int main(){
 
  float jeffscut = outputs[0];
  float finalbalance = outputs[1];
+
+ std::vector<float> nojoutputs = incrementinterest( dayspergroup*groups, 1,
+   rate, initialbalance, 0, 0.0 );
+
+ float nojjeffscut = nojoutputs[0];
+ float nojfinalbalance = nojoutputs[1];
 
  //  // print all elements
  //  std::cout << "vector elements are: ";
@@ -71,6 +77,7 @@ int main(){
  //  std::cout << "\n";
 
  std::cout<<"\n\n";
+ std::cout<<"-------------------------------\n";
  std::cout<<"Initial Balance: "<<initialbalance<<"\n";
  std::cout<<"  days per group:   "<<dayspergroup<<"\n";
  std::cout<<"  number of groups: "<<groups<<"\n";
@@ -78,6 +85,11 @@ int main(){
  std::cout<<"  Jeff's percent:     "<<jeffspercent<<"\n";
  std::cout<<"Tom's Final Balance: "<<finalbalance<<"\n";
  std::cout<<"Jeffs Cut:           "<<jeffscut<<"\n";
+ std::cout<<"-------------------------------\n";
+ std::cout<<" w/o including Jeff \n";
+ std::cout<<" Tom's Final Balance: "<<nojfinalbalance<<"\n";
+ //std::cout<<"Jeffs Cut:           "<<nojjeffscut<<"\n";
+ std::cout<<"-------------------------------\n";
  std::cout<<"\n";
   
  return 1;
