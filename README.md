@@ -21,10 +21,9 @@ Source code for various algorithm implementations
  - sort an array from min to max (selection sort)
  - find the sum of all numbers between a and b
 
- ## kmeans
+## kmeans
  implementation of kmeans clustering algorithm
   - includes python plotting script
-
 
  run `./compkmeans` to compile c++ file \
  then `./kmeans` to run algorithm \
@@ -34,5 +33,4 @@ Source code for various algorithm implementations
  CS 229 - Machine Learning, Stanford \
  course by Andrew Ng
  
- 
- 
+  
