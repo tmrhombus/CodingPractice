@@ -3,19 +3,42 @@
 #include <cmath>      // for pow
 #include <vector>     // for vectors
 
-std::vector<float> incrementinterest( int steps, float growthrate, float initbalance, 
+std::vector<float> incrementinterest( int steps, int groups, 
+                         float growthrate, float initbalance, 
                          float jeffspercent ){
+
+ std::cout<<"Start of incrementinterest(...)\n";
+ std::cout<<" steps: "<<steps<<"\n";
+ std::cout<<" groups: "<<groups<<"\n";
+ std::cout<<" growthrate: "<<growthrate<<"\n";
+ std::cout<<" initbalance: "<<initbalance<<"\n";
+ std::cout<<" jeffspercent: "<<jeffspercent<<"\n";
+
+ if( groups <= 0 ){
+  std::vector<float>  outputs;
+  //outputs.push_back( initbalance  ); 
+  outputs.push_back( 0 ); 
+  outputs.push_back( initbalance ); 
+  return outputs;
+
+ }
 
  float compoundbalance = initbalance * pow( growthrate, steps );
  float compoundprofit  = compoundbalance - initbalance;
 
  float jeffscut     = compoundprofit * jeffspercent; 
  float finalbalance = compoundbalance - jeffscut;
+ 
+ std::cout<<" jeffscut: "<<jeffscut<<"\n";
+ std::cout<<" finalbalance: "<<finalbalance<<"\n";
 
  std::vector<float>  outputs;
- outputs.push_back( initbalance  ); 
- outputs.push_back( jeffscut     ); 
- outputs.push_back( finalbalance ); 
+ outputs = incrementinterest( steps, groups-1, growthrate,
+                              finalbalance,
+                              jeffspercent );
+// //outputs.push_back( initbalance  ); 
+// outputs.push_back( jeffscut     ); 
+// outputs.push_back( finalbalance ); 
 
  return outputs ;
 
@@ -25,23 +48,29 @@ std::vector<float> incrementinterest( int steps, float growthrate, float initbal
 int main(){
 
  float initialbalance = 1000;
- int   steps = 20;
+ int   dayspergroup = 1;
+ int   groups = 2; 
  float rate = 1.01;
- float jeffspercent = 0.00;
+ float jeffspercent = 0.01;
 
- std::vector<float> outputs = incrementinterest( steps, rate, initialbalance, jeffspercent );
+ std::vector<float> outputs = incrementinterest( dayspergroup, groups, 
+   rate, initialbalance, jeffspercent );
 
- // print all elements
- std::cout << "vector elements are: ";
- for (int i = 0; i < outputs.size(); ++i) {
-     std::cout << outputs[i] << ' ';
- }
- std::cout << "\n";
+ float jeffscut = outputs[0];
+ float finalbalance = outputs[1];
 
-// std::cout<<"Initial Balance: "<<initialbalance<<"\n";
-// std::cout<<"  steps: "<<steps<<"\n";
-// std::cout<<"  rate:  "<<rate<<"\n";
-// std::cout<<"Final Balance: "<<finalbalance<<"\n";
+ //  // print all elements
+ //  std::cout << "vector elements are: ";
+ //  for (int i = 0; i < outputs.size(); ++i) {
+ //      std::cout << outputs[i] << ' ';
+ //  }
+ //  std::cout << "\n";
+
+ std::cout<<"Initial Balance: "<<initialbalance<<"\n";
+ std::cout<<"  days per group: "<<dayspergroup<<"\n";
+ std::cout<<"  rate:  "<<rate<<"\n";
+ std::cout<<"Jeffs Cut:     "<<jeffscut<<"\n";
+ std::cout<<"Final Balance: "<<finalbalance<<"\n";
   
  return 1;
 
