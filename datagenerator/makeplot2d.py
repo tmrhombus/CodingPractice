@@ -9,8 +9,10 @@ import seaborn as sb
 infilebase = "./data/"
 outfilebase = "./plots/"
 
-datafilename = "linear2d" 
+#datafilename = "linear2d" 
+#datafilename = "singlegauss" 
 #datafilename = "doublegauss" 
+datafilename = "triplegauss" 
 
 infilename  = infilebase  + datafilename + ".csv"
 outfilename = outfilebase + datafilename + ".png"

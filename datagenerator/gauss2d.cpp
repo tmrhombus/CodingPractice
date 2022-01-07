@@ -21,10 +21,10 @@ int main()
  //default_random_engine e (seed); 
 
  std::default_random_engine generatorX(seed);
- std::normal_distribution<double> distributionX(20,5.0);
+ std::normal_distribution<double> distributionX(30,9.0);
 
  std::default_random_engine generatorY(seed+1);
- std::normal_distribution<double> distributionY(10,2.0);
+ std::normal_distribution<double> distributionY(40,12.0);
 
   // distribution(mean,variance) 
 
