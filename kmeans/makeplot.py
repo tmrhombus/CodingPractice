@@ -10,7 +10,7 @@ sb.scatterplot(x=datafile["Some Random X"],
 plt.title("Scatterplot of X and Y")
 
 # After clustering
-for x in range(0, 5):
+for x in range(0, 4):
  plt.figure()
  filebase = "./plots/outfile_"
  pointsfilename = filebase + "points"+str(x)
