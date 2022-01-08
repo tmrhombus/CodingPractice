@@ -75,14 +75,34 @@ void findRangeOfInputData( float& minX, float& minY,
 }
 
 
-void initializeCenters( float& minX, float& minY,
-                        float& maxX, float& maxY,
+void initializeCenters( const int& ncentersX, const int& ncentersY,
+                        const float& minX,    const float& minY,
+                        const float& maxX,    const float& maxY,
                         std::vector<Point>& centerlist ){
 
+ std::vector<float> xs;
+ std::vector<float> ys;
 
- centerlist.push_back( Point(3.2,5.1) );
- centerlist.push_back( Point(1.2,3.1) );
+ float xdiff = maxX - minX;
+ float xinc = xdiff/(ncentersX-1);
+ float ydiff = maxY - minY;
+ float yinc = ydiff/(ncentersY-1);
 
+ for( int i=0; i<ncentersX; ++i){
+  xs.push_back( minX + i*xinc );
+ }
+
+ for( int i=0; i<ncentersY; ++i){
+  ys.push_back( minY + i*yinc );
+ }
+
+ for (std::vector<float>::iterator itX = xs.begin();
+      itX != xs.end(); ++itX) {
+  for (std::vector<float>::iterator itY = ys.begin();
+       itY != ys.end(); ++itY) {
+   centerlist.push_back( Point( *itX, *itY ) );
+  }
+ }
 
 }
 
@@ -219,7 +239,9 @@ int main()
 
 
  std::vector<Point> centerlist;
- initializeCenters( minX, minY, maxX, maxY, centerlist );
+ int ncentersX = 5;
+ int ncentersY = 5;
+ initializeCenters( ncentersX, ncentersY, minX, minY, maxX, maxY, centerlist );
 
  for (std::vector<Point>::iterator it = centerlist.begin();
       it != centerlist.end(); ++it){
@@ -228,6 +250,8 @@ int main()
   std::cout<<"("<<center.x<<","<<center.y<<")\n";
 
  }
+
+
 
 
 
