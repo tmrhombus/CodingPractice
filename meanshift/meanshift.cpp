@@ -106,6 +106,35 @@ void initializeCenters( const int& ncentersX, const int& ncentersY,
 
 }
 
+
+void associateCentersToPoints( std::vector<Point>& pointlist,
+     std::vector<Point>& centerlist, float searchradius ){
+
+ // for each point, see if center_i is within searchradius
+ // if so, add it to the list
+ int pointnr = 0;
+ int centernr = 0;
+ for (std::vector<Point>::iterator itPoint = pointlist.begin();
+      itPoint != pointlist.end(); ++itPoint) {
+  for (std::vector<Point>::iterator itCenter = centerlist.begin();
+       itCenter != centerlist.end(); ++itCenter) {
+
+  std::cout<<"Point:  ("<<itPoint->x<<","<<itPoint->y<<")\n";
+  std::cout<<"Center: ("<<itCenter->x<<","<<itCenter->y<<")\n\n";
+  if( itPoint->dist2(*itCenter) < searchradius*searchradius )
+   pointlist.at(pointnr).cluster.push_back( centernr );
+   // std::cout<<pointlist.at(pointnr).x<<" "<<pointlist.at(pointnr).y<<"\n\n";
+   // std::cout<<centerlist.at(centernr).x<<" "<<centerlist.at(centernr).y<<"\n\n";
+ 
+  centernr++;
+  }
+ centernr = 0;
+ pointnr++;
+ }
+
+}
+
+
  //  //  void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* centers)
  //  //  {
  //  //  
@@ -243,15 +272,32 @@ int main()
  int ncentersY = 5;
  initializeCenters( ncentersX, ncentersY, minX, minY, maxX, maxY, centerlist );
 
- for (std::vector<Point>::iterator it = centerlist.begin();
-      it != centerlist.end(); ++it){
+ // for (std::vector<Point>::iterator it = centerlist.begin();
+ //      it != centerlist.end(); ++it){
+ //  Point center = *it;
+ //  std::cout<<"("<<center.x<<","<<center.y<<")\n";
+ //
+ // }
 
-  Point center = *it;
-  std::cout<<"("<<center.x<<","<<center.y<<")\n";
+
+ float searchradius = 10;
+ associateCentersToPoints( pointlist, centerlist, searchradius );
+
+ std::cout<<" Points in pointlist\n";
+ for (std::vector<Point>::iterator it = pointlist.begin();
+      it != pointlist.end(); ++it) {
+  Point p = *it;
+  std::cout<<"("<<p.x<<","<<p.y<<")";
+  
+  std::cout<<" Clusters: ";
+  for (std::vector<int>::iterator itC = p.cluster.begin();
+       itC != p.cluster.end(); ++itC) {
+
+   std::cout<<*itC<<" ";
+  }
+  std::cout<<"\n";
 
  }
-
-
 
 
 
