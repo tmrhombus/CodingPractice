@@ -3,7 +3,7 @@
 
 Source code for various algorithm implementations 
 
-## bitwise ops
+## bitwise operations
  example of functions executing bitwise operations 
  - logical operators
  - right/left shift div/mult by 2
@@ -29,7 +29,13 @@ Source code for various algorithm implementations
  then `./kmeans` to run algorithm \
  then `python makeplot.py` to make the plots \
 
- ## MachineLearning
+
+## datagenerator
+ code to generate fake datasets
+ - normal distributions
+ - gaussian jitter along a line
+
+## MachineLearning
  CS 229 - Machine Learning, Stanford \
  course by Andrew Ng
  
