@@ -1,4 +1,4 @@
-// K Means Algorithm
+// Mean Shift Clustering Algorithm
 
 #include <ctime>     // for a random seed
 #include <fstream>   // for file-reading
@@ -10,7 +10,7 @@
 struct Point {
     double x, y;                // coordinates
     std::vector<int> cluster;   // associated cluster(s)
-    double minDist;             // distance(2) to nearest cluster
+    // double minDist;             // distance(2) to nearest cluster
 
     Point(double x, double y) :
         x(x),
@@ -107,32 +107,148 @@ void initializeCenters( const int& ncentersX, const int& ncentersY,
 }
 
 
-void associateCentersToPoints( std::vector<Point>& pointlist,
+void associatePointsToCenters( std::vector<Point>& pointlist,
      std::vector<Point>& centerlist, float searchradius ){
 
  // for each point, see if center_i is within searchradius
  // if so, add it to the list
  int pointnr = 0;
  int centernr = 0;
- for (std::vector<Point>::iterator itPoint = pointlist.begin();
-      itPoint != pointlist.end(); ++itPoint) {
-  for (std::vector<Point>::iterator itCenter = centerlist.begin();
-       itCenter != centerlist.end(); ++itCenter) {
+ for (std::vector<Point>::iterator itCenter = centerlist.begin();
+      itCenter != centerlist.end(); ++itCenter) {
+  for (std::vector<Point>::iterator itPoint = pointlist.begin();
+       itPoint != pointlist.end(); ++itPoint) {
 
-  std::cout<<"Point:  ("<<itPoint->x<<","<<itPoint->y<<")\n";
-  std::cout<<"Center: ("<<itCenter->x<<","<<itCenter->y<<")\n\n";
+  // std::cout<<"Point:  ("<<itPoint->x<<","<<itPoint->y<<")\n";
+  // std::cout<<"Center: ("<<itCenter->x<<","<<itCenter->y<<")\n\n";
   if( itPoint->dist2(*itCenter) < searchradius*searchradius )
-   pointlist.at(pointnr).cluster.push_back( centernr );
+   centerlist.at(centernr).cluster.push_back( pointnr );
    // std::cout<<pointlist.at(pointnr).x<<" "<<pointlist.at(pointnr).y<<"\n\n";
    // std::cout<<centerlist.at(centernr).x<<" "<<centerlist.at(centernr).y<<"\n\n";
  
-  centernr++;
+  pointnr++;
   }
- centernr = 0;
- pointnr++;
+ pointnr = 0;
+ centernr++;
  }
 
 }
+
+
+void recalculateCenters( std::vector<Point>& pointlist,
+                         std::vector<Point>& centerlist,
+                         bool& haveweconverged ){
+
+ int pointnr = 0;
+ int centernr = 0;
+
+ std::vector<Point> newcenterlist;
+
+ //std::cout<<"Old Centers\n";
+ for (std::vector<Point>::iterator itC = centerlist.begin();
+      itC != centerlist.end(); ++itC) {
+ 
+  int nrpoints = 0;
+  float totalX = 0;
+  float totalY = 0;
+  // std::cout<<"("<<itC->x<<","<<itC->y<<")\n";
+  // std::cout<<centerlist.at(centernr).x<<","<<centerlist.at(centernr).y<<"\n";
+ 
+  for (std::vector<int>::iterator itP = itC->cluster.begin();
+       itP != itC->cluster.end(); ++itP) {
+   nrpoints++;
+   totalX += pointlist.at(*itP).x;
+   totalY += pointlist.at(*itP).y;
+  //  std::cout<<": ("<<pointlist.at(*itP).x<<","<<pointlist.at(*itP).y<<")";
+  }
+
+  if(nrpoints>0){
+   newcenterlist.push_back( Point( totalX/nrpoints, totalY/nrpoints ) );
+  }
+
+  centernr++;
+ }
+
+ //std::cout<<"New Centers\n";
+ //for (std::vector<Point>::iterator itCenter = newcenterlist.begin();
+ //     itCenter != newcenterlist.end(); ++itCenter) {
+ //  std::cout<<" ("<<itCenter->x<<","<<itCenter->y<<")\n";
+ //}
+
+ // test for convergence
+ std::cout<<"Testing for convergence\n";
+ std::cout<<centerlist.size()<<" "<<newcenterlist.size()<<"\n"; 
+ if(centerlist.size() == newcenterlist.size()){
+  float deltaX = 0;
+  float deltaY = 0;
+  for ( int i=0; i<centerlist.size(); ++i ){
+    std::cout<<" old ("<<centerlist.at(i).x<<","<<centerlist.at(i).y<<")\n";
+    std::cout<<" new ("<<newcenterlist.at(i).x<<","<<newcenterlist.at(i).y<<")\n\n";
+    deltaX += std::fabs( centerlist.at(i).x - newcenterlist.at(i).x );
+    deltaY += std::fabs( centerlist.at(i).y - newcenterlist.at(i).y );
+  }
+  std::cout<<" DeltaX: "<<deltaX<<"\n";
+  std::cout<<" DeltaY: "<<deltaY<<"\n";
+  if( (deltaX+deltaY) < 0.1 ) haveweconverged = true;
+ }
+
+ centerlist = newcenterlist;
+
+}
+
+ 
+void writeToFile( std::vector<Point>& thelist, std::string filebase, 
+                  std::string datatype, int iterationnr, bool docolor ){
+
+ std::ofstream myfile;
+ std::string filename = filebase+datatype+std::to_string(iterationnr)+".csv";
+ myfile.open(filename);
+ 
+ if (docolor)  myfile << "x,y,c" << std::endl;
+ else          myfile << "x,y" << std::endl;
+
+ for (std::vector<Point>::iterator it = thelist.begin(); 
+      it != thelist.end(); ++it) {
+  //myfile << it->x << "," << it->y << "," << it->cluster << std::endl;
+   myfile << it->x << "," << it->y << "\n";
+  }
+ myfile.close();
+
+
+
+}
+
+//  //    //write to file
+//  //    std::ofstream myfile;
+//  //    std::string filename = "./plots/outfile_points"+std::to_string(iterationnr)+".csv";
+//  //    myfile.open(filename);
+//  //    myfile << "x,y,c" << std::endl;
+//  //    
+//  //    for (std::vector<Point>::iterator it = pointlist.begin(); 
+//  //         it != pointlist.end(); ++it) {
+//  //     myfile << it->x << "," << it->y << "," << it->cluster << std::endl;
+//  //    }
+//  //    myfile.close();
+//  //  
+//  //    filename = "./plots/outfile_centers"+std::to_string(iterationnr)+".csv";
+//  //    myfile.open(filename);
+//  //    myfile << "x,y" << std::endl;
+//  //    
+//  //    for (std::vector<Point>::iterator it = newcenterlist.begin(); 
+//  //         it != newcenterlist.end(); ++it) {
+//  //     myfile << it->x << "," << it->y << std::endl;
+//  //    }
+//  //    myfile.close();
+//  //  
+//  //    if(std::abs(diffX+diffY) < 0.1) break;
+//  //  
+//  //    for (int i = 0; i < newcenterlist.size(); ++i) {
+//  //      oldcenterlist[i].x = newcenterlist[i].x;
+//  //      oldcenterlist[i].y = newcenterlist[i].y;
+//  //    }
+//  //    
+//  //   iterationnr++;
+
 
 
  //  //  void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* centers)
@@ -237,12 +353,10 @@ void associateCentersToPoints( std::vector<Point>& pointlist,
 int main()
 {
 
- int ncenters = 2;
-
- std::string filename = "triplegauss.csv";
+ std::string infilename = "./data/triplegauss.csv";
  //std::string filename = "twoblobs.csv";
 
- std::vector<Point> pointlist =  getPointsFromCSV(filename);
+ std::vector<Point> pointlist =  getPointsFromCSV(infilename);
 
  // std::cout<<" Points in pointlist\n";
  // for (std::vector<Point>::iterator it = pointlist.begin();
@@ -280,24 +394,71 @@ int main()
  // }
 
 
- float searchradius = 10;
- associateCentersToPoints( pointlist, centerlist, searchradius );
+ int iterationnr = 0;
+ bool weveconverged = false;
+ std::string filebase = "./plots/outfile_";
 
- std::cout<<" Points in pointlist\n";
- for (std::vector<Point>::iterator it = pointlist.begin();
-      it != pointlist.end(); ++it) {
-  Point p = *it;
-  std::cout<<"("<<p.x<<","<<p.y<<")";
-  
-  std::cout<<" Clusters: ";
-  for (std::vector<int>::iterator itC = p.cluster.begin();
-       itC != p.cluster.end(); ++itC) {
+ while(true){
 
-   std::cout<<*itC<<" ";
-  }
-  std::cout<<"\n";
+  if (iterationnr >= 50) break;  // just in case 
+  if (weveconverged) break; 
+  // write centers to file
+  writeToFile( centerlist, filebase, "centers", iterationnr, false ); 
+ 
+  float searchradius = 10;
+  associatePointsToCenters( pointlist, centerlist, searchradius );
+ 
+  // std::cout<<"--Original Centers--\n";
+  // for (std::vector<Point>::iterator itC = centerlist.begin();
+  //      itC != centerlist.end(); ++itC) {
+  // 
+  //  std::cout<<"("<<itC->x<<","<<itC->y<<")";
+  // 
+  //   for (std::vector<int>::iterator itP = itC->cluster.begin();
+  //        itP != itC->cluster.end(); ++itP) {
+  // 
+  //    std::cout<<": ("<<pointlist.at(*itP).x<<","<<pointlist.at(*itP).y<<")";
+  // 
+  //   }
+  //  std::cout<<"\n";
+  // }
+ 
+  recalculateCenters( pointlist, centerlist, weveconverged );
+ 
+  std::cout<<"Converged: "<<weveconverged<<"\n";
+  // std::cout<<"--New Centers--\n";
+  // for (std::vector<Point>::iterator itC = centerlist.begin();
+  //      itC != centerlist.end(); ++itC) {
+  // 
+  //  std::cout<<"("<<itC->x<<","<<itC->y<<")\n";
+  // 
+  // }
+
+ iterationnr++;
 
  }
+
+// write points to file
+writeToFile( pointlist, filebase, "points", 0, false ); 
+
+
+}
+
+
+ // std::cout<<" Points in pointlist\n";
+ // for (std::vector<Point>::iterator it = pointlist.begin();
+ //      it != pointlist.end(); ++it) {
+ //  Point p = *it;
+ //  std::cout<<"("<<p.x<<","<<p.y<<")";
+ //  
+ //  std::cout<<" Clusters: ";
+ //  for (std::vector<int>::iterator itC = p.cluster.begin();
+ //       itC != p.cluster.end(); ++itC) {
+ //
+ //   std::cout<<*itC<<" ";
+ //  }
+ //  std::cout<<"\n";
+ // }
 
 
 
@@ -381,5 +542,4 @@ int main()
 //  //   std::cout<<"----------------------\n";
 
 
-}
 
