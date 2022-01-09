@@ -143,6 +143,7 @@ void recalculateCenters( std::vector<Point>& pointlist,
  int centernr = 0;
 
  std::vector<Point> newcenterlist;
+ std::vector<Point> cleanednewcenterlist;
 
  //std::cout<<"Old Centers\n";
  for (std::vector<Point>::iterator itC = centerlist.begin();
@@ -175,24 +176,61 @@ void recalculateCenters( std::vector<Point>& pointlist,
  //  std::cout<<" ("<<itCenter->x<<","<<itCenter->y<<")\n";
  //}
 
+
+ // remove overlapping centers
+ for ( int i=0; i<newcenterlist.size(); ++i ){
+  //std::cout<<i<<"\n";
+  bool keepcenter = true;
+  for ( int j=i+1; j<newcenterlist.size(); ++j ){
+   if(i==j) continue;
+
+   float d2 = newcenterlist[i].dist2(newcenterlist[j]);
+   //std::cout<<"d2 "<<d2<<"\n";
+   if(d2 < 4) keepcenter=false;
+   //std::cout<<" "<<j<<"\n";
+   
+  }
+
+  if(keepcenter) cleanednewcenterlist.push_back(newcenterlist[i]);
+ }
+
+ //  // test for convergence
+ //  // std::cout<<"Testing for convergence\n";
+ //  // std::cout<<centerlist.size()<<" "<<newcenterlist.size()<<"\n"; 
+ //  if(centerlist.size() == newcenterlist.size()){
+ //   float deltaX = 0;
+ //   float deltaY = 0;
+ //   for ( int i=0; i<centerlist.size(); ++i ){
+ //     // std::cout<<" old ("<<centerlist.at(i).x<<","<<centerlist.at(i).y<<")\n";
+ //     // std::cout<<" new ("<<newcenterlist.at(i).x<<","<<newcenterlist.at(i).y<<")\n\n";
+ //     deltaX += std::fabs( centerlist.at(i).x - newcenterlist.at(i).x );
+ //     deltaY += std::fabs( centerlist.at(i).y - newcenterlist.at(i).y );
+ //   }
+ //   // std::cout<<" DeltaX: "<<deltaX<<"\n";
+ //   // std::cout<<" DeltaY: "<<deltaY<<"\n";
+ //   if( (deltaX+deltaY) < 0.1 ) haveweconverged = true;
+ //  }
+ // 
+ //  centerlist = newcenterlist;
+
  // test for convergence
- std::cout<<"Testing for convergence\n";
- std::cout<<centerlist.size()<<" "<<newcenterlist.size()<<"\n"; 
- if(centerlist.size() == newcenterlist.size()){
+ // std::cout<<"Testing for convergence\n";
+ // std::cout<<centerlist.size()<<" "<<cleanednewcenterlist.size()<<"\n"; 
+ if(centerlist.size() == cleanednewcenterlist.size()){
   float deltaX = 0;
   float deltaY = 0;
   for ( int i=0; i<centerlist.size(); ++i ){
-    std::cout<<" old ("<<centerlist.at(i).x<<","<<centerlist.at(i).y<<")\n";
-    std::cout<<" new ("<<newcenterlist.at(i).x<<","<<newcenterlist.at(i).y<<")\n\n";
-    deltaX += std::fabs( centerlist.at(i).x - newcenterlist.at(i).x );
-    deltaY += std::fabs( centerlist.at(i).y - newcenterlist.at(i).y );
+    // std::cout<<" old ("<<centerlist.at(i).x<<","<<centerlist.at(i).y<<")\n";
+    // std::cout<<" new ("<<cleanednewcenterlist.at(i).x<<","<<cleanednewcenterlist.at(i).y<<")\n\n";
+    deltaX += std::fabs( centerlist.at(i).x - cleanednewcenterlist.at(i).x );
+    deltaY += std::fabs( centerlist.at(i).y - cleanednewcenterlist.at(i).y );
   }
-  std::cout<<" DeltaX: "<<deltaX<<"\n";
-  std::cout<<" DeltaY: "<<deltaY<<"\n";
+  // std::cout<<" DeltaX: "<<deltaX<<"\n";
+  // std::cout<<" DeltaY: "<<deltaY<<"\n";
   if( (deltaX+deltaY) < 0.1 ) haveweconverged = true;
  }
 
- centerlist = newcenterlist;
+ centerlist = cleanednewcenterlist;
 
 }
 
@@ -405,7 +443,7 @@ int main()
   // write centers to file
   writeToFile( centerlist, filebase, "centers", iterationnr, false ); 
  
-  float searchradius = 10;
+  float searchradius = 15;
   associatePointsToCenters( pointlist, centerlist, searchradius );
  
   // std::cout<<"--Original Centers--\n";
@@ -425,7 +463,7 @@ int main()
  
   recalculateCenters( pointlist, centerlist, weveconverged );
  
-  std::cout<<"Converged: "<<weveconverged<<"\n";
+  //std::cout<<"Converged: "<<weveconverged<<"\n";
   // std::cout<<"--New Centers--\n";
   // for (std::vector<Point>::iterator itC = centerlist.begin();
   //      itC != centerlist.end(); ++itC) {
