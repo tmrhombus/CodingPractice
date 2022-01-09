@@ -11,7 +11,7 @@ plt.title("Scatterplot of X and Y")
 plt.savefig("initialdata.png")
 
 # Now add centers
-for x in range(0, 24):
+for x in range(0, 12):
  plt.figure()
  # print()"{:02d}".format(1)
  filebase = "./plots/outfile_"
@@ -37,7 +37,7 @@ for x in range(0, 24):
   # print(df.values[i][0]) 
   # print(df.values[i][1]) 
   #mycirc = plt.Circle((20, 20), 5, color='g', fill=False)
-  mycirc = plt.Circle((df.values[i][0], df.values[i][1]), 5, color='r', fill=False)
+  mycirc = plt.Circle((df.values[i][0], df.values[i][1]), 15, color='r', fill=False)
   plt.gca().add_patch(mycirc)
 
  plt.xlabel("Some Random X")
