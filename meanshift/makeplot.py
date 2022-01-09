@@ -2,19 +2,22 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sb 
 
+filebase = "./plots/outfile_"
+
 # Before clustering
 inputpointfile = pd.read_csv("./data/triplegauss.csv", header=None)
 inputpointfile.columns = ["Some Random X", "Some Random Y"]
 sb.scatterplot(x=inputpointfile["Some Random X"], 
                 y=inputpointfile["Some Random Y"])
 plt.title("Scatterplot of X and Y")
-plt.savefig("initialdata.png")
+plt.xlim([-20, 130])
+plt.ylim([-20, 100])
+plt.savefig(filebase+"initialdata.png")
 
 # Now add centers
 for x in range(0, 12):
  plt.figure()
  # print()"{:02d}".format(1)
- filebase = "./plots/outfile_"
  pointsfilename = filebase + "points0"
  centersfilename = filebase + "centers"+str(x)
  outfilename = filebase + "plot_" + "{:02d}".format(x) + ".png"
@@ -43,6 +46,8 @@ for x in range(0, 12):
  plt.xlabel("Some Random X")
  plt.ylabel("Some Random Y")
  plt.title("Clustered: X vs Y")
+ plt.xlim([-20, 130])
+ plt.ylim([-20, 100])
  plt.savefig(outfilename)
  plt.clf()
  plt.close()
