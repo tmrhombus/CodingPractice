@@ -22,13 +22,16 @@ Source code for various algorithm implementations
  - find the sum of all numbers between a and b
 
 ## kmeans
- implementation of kmeans clustering algorithm
+ implementation of kmeans clustering algorithm 
   - includes python plotting script
 
  run `./compkmeans` to compile c++ file \
  then `./kmeans` to run algorithm \
- then `python makeplot.py` to make the plots \
+ then `python makeplot.py` to make the plots
 
+## meanshift
+ implementation of the mean shift clustering algorithm \
+ <img src="./meanshift/plots/animation.gif" width="300"  />
 
 ## datagenerator
  code to generate fake datasets
