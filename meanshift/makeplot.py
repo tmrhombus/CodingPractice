@@ -90,6 +90,28 @@ plt.ylim([-20, 100])
 plt.savefig(outfilename)
 plt.close()
 
+
+# now a colored plot with no centers
+x=12
+plt.figure()
+# print()"{:02d}".format(1)
+pointsfilename = filebase + "points0"
+outfilename = filebase + "plot_" + "{:02d}".format(x) + "_colorNOC.png"
+
+
+pointsdatafile = pd.read_csv(pointsfilename+".csv")
+sb.scatterplot(x=pointsdatafile.x, y=pointsdatafile.y, 
+                hue=pointsdatafile.c, 
+                palette=sb.color_palette("hls", n_colors=3))
+
+plt.xlabel("Some Random X")
+plt.ylabel("Some Random Y")
+plt.title("Clustered: X vs Y")
+plt.xlim([-20, 130])
+plt.ylim([-20, 100])
+plt.savefig(outfilename)
+plt.close()
+
   
  #plt.show()
 
