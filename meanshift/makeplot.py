@@ -9,7 +9,7 @@ inputpointfile = pd.read_csv("./data/triplegauss.csv", header=None)
 inputpointfile.columns = ["Some Random X", "Some Random Y"]
 sb.scatterplot(x=inputpointfile["Some Random X"], 
                 y=inputpointfile["Some Random Y"])
-plt.title("Scatterplot of X and Y")
+plt.title("Initial Plot of X and Y")
 plt.xlim([-20, 130])
 plt.ylim([-20, 100])
 plt.savefig(filebase+"initialdata.png")
@@ -45,7 +45,7 @@ for x in range(0, 12):
 
  plt.xlabel("Some Random X")
  plt.ylabel("Some Random Y")
- plt.title("Clustered: X vs Y")
+ plt.title("Clustering - Mean Shift")
  plt.xlim([-20, 130])
  plt.ylim([-20, 100])
  plt.savefig(outfilename)
@@ -84,7 +84,7 @@ for i in range(len(df)):
 
 plt.xlabel("Some Random X")
 plt.ylabel("Some Random Y")
-plt.title("Clustered: X vs Y")
+plt.title("Clustering - Mean Shift")
 plt.xlim([-20, 130])
 plt.ylim([-20, 100])
 plt.savefig(outfilename)
@@ -106,7 +106,7 @@ sb.scatterplot(x=pointsdatafile.x, y=pointsdatafile.y,
 
 plt.xlabel("Some Random X")
 plt.ylabel("Some Random Y")
-plt.title("Clustered: X vs Y")
+plt.title("Clustered via Mean Shift")
 plt.xlim([-20, 130])
 plt.ylim([-20, 100])
 plt.savefig(outfilename)
