@@ -92,7 +92,7 @@ void associatePointsToClusters(std::vector<Point>* points, std::vector<Point>* c
 
 
 void initCenters(std::vector<Point>* pointlist, int ncenters, std::vector<Point>* oldcenterlist, std::vector<Point>* newcenterlist){
- //srand(time(0));  // set the seed
+ srand(time(0));  // set the seed
  for (int i = 0; i < ncenters; ++i) {
      oldcenterlist->push_back( Point(__DBL_MAX__,__DBL_MAX__) );
      newcenterlist->push_back(pointlist->at(rand() % pointlist->size() ));
@@ -151,10 +151,9 @@ void recalculateCenters(std::vector<Point>* points, std::vector<Point>* centers)
 int main()
 {
 
- int ncenters = 2;
+ int ncenters = 4;
 
- std::string filename = "twogauss.csv";
- //std::string filename = "twoblobs.csv";
+ std::string filename = "fourgauss.csv";
 
  std::vector<Point> pointlist =  getPointsFromCSV(filename);
 
