@@ -13,7 +13,7 @@ int main()
  double x;  // x variable to be filled
  double y;  // y variable to be filled
 
- int npoints = 300;  //
+ int npoints = 200;  //
 
 
  /* Create random engine with the help of seed */
@@ -21,10 +21,10 @@ int main()
  //default_random_engine e (seed); 
 
  std::default_random_engine generatorX(seed);
- std::normal_distribution<double> distributionX(30,9.0);
+ std::normal_distribution<double> distributionX(-50,15.0);
 
  std::default_random_engine generatorY(seed+1);
- std::normal_distribution<double> distributionY(40,12.0);
+ std::normal_distribution<double> distributionY(-15,10.0);
 
   // distribution(mean,variance) 
 
