@@ -25,13 +25,21 @@ Source code for various algorithm implementations
  implementation of kmeans clustering algorithm 
   - includes python plotting script
 
+ <img src="./kmeans/plots/animation.gif" width="300"  />
+
  run `./compkmeans` to compile c++ file \
  then `./kmeans` to run algorithm \
  then `python makeplot.py` to make the plots
 
 ## meanshift
  implementation of the mean shift clustering algorithm \
+  -includes python plotting script
+  
  <img src="./meanshift/plots/animation.gif" width="300"  />
+
+ run `./compmeanshift.sh` to compile c++ file \
+ then `./meanshift` to run algorithm \
+ then `python makeplot.py` to make the plots
 
 ## datagenerator
  code to generate fake datasets
