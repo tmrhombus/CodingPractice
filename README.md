@@ -35,6 +35,9 @@ Source code for various algorithm implementations
  implementation of the mean shift clustering algorithm \
   -includes python plotting script
   
+  
+ <img src="./meanshift/plots2/animation.gif" width="300"  />
+
  <img src="./meanshift/plots/animation.gif" width="300"  />
 
  run `./compmeanshift.sh` to compile c++ file \
