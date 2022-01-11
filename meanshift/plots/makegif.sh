@@ -17,12 +17,22 @@ outfile_plot_08.png           \
 outfile_plot_09.png           \
 outfile_plot_10.png           \
 outfile_plot_11.png           \
-outfile_plot_12_color.png     \
-outfile_plot_12_colorNOC.png  \
-outfile_plot_12_colorNOC.png  \
-outfile_plot_12_colorNOC.png  \
-outfile_plot_12_colorNOC.png  \
-outfile_plot_12_colorNOC.png  \
+outfile_plot_12.png           \
+outfile_plot_13.png           \
+outfile_plot_14.png           \
+outfile_plot_15.png           \
+outfile_plot_15.png           \
+outfile_plot_15.png           \
+outfile_plot_15.png           \
+outfile_plot_15.png           \
+outfile_plot_15_color.png     \
+outfile_plot_15_color.png     \
+outfile_plot_15_color.png     \
+outfile_plot_15_colorNOC.png  \
+outfile_plot_15_colorNOC.png  \
+outfile_plot_15_colorNOC.png  \
+outfile_plot_15_colorNOC.png  \
+outfile_plot_15_colorNOC.png  \
 animation.gif
 
 
