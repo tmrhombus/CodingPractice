@@ -318,8 +318,7 @@ void associateCentersToPoints(std::vector<Point>& pointlist,
 int main()
 {
 
- std::string infilename = "./data/triplegauss.csv";
- //std::string filename = "twoblobs.csv";
+ std::string infilename = "./data/fourgauss.csv";
 
  std::vector<Point> pointlist =  getPointsFromCSV(infilename);
 
