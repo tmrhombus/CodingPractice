@@ -1,7 +1,7 @@
 
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sb
+# import matplotlib.pyplot as plt
+# import seaborn as sb
 
 
 
@@ -20,8 +20,14 @@ def doit():
  #     return self.contents 
 
 
-
-
 def importdata( filename ):
  datafile = pd.read_csv( filename )
  return datafile
+
+def hfunction( theta0, theta1, x ):
+ return theta0 + theta1*x
+
+# def 
+
+# def jfunction( hx, y, m ):
+ 
