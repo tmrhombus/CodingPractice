@@ -6,8 +6,9 @@ import sys # write file
 # get datafile
 dataloc = "./data/"
 outfileloc = "./outfiles/"
-datafile = bgd.importdata( dataloc+"twopoints.csv" )
-#datafile = bgd.importdata( dataloc+"linear2d.csv" )
+#datafile = bgd.importdata( dataloc+"twopoints.csv" )
+#datafile = bgd.importdata( dataloc+"threepoints.csv" )
+datafile = bgd.importdata( dataloc+"linear2d.csv" )
 
 #print(datafile)
 
@@ -21,14 +22,16 @@ ymatrix = datafile.y
 
  
 # initialize thetas
-theta_0 = 0
+theta_0 = 20
 theta_1 = 0
  
 # start iterating
-stepsize = 0.01
+stepsize_0 = 0.01/len(datafile.x)
+stepsize_1 = 0.0001/len(datafile.x)
+#stepsize = 0.01/len(datafile.x)
 iterationnr = 0
 while True:
- if iterationnr > 20: break
+ if iterationnr > 100: break
  print("Iteration: "+str(iterationnr))
  print("theta_0: "+str(theta_0))
  print("theta_1: "+str(theta_1))
@@ -46,29 +49,29 @@ while True:
  print("derivJ_0: "+str(derivativeJ_0))
  print("derivJ_1: "+str(derivativeJ_1))
 
- update_0 = stepsize*derivativeJ_0
- update_1 = stepsize*derivativeJ_1
+ update_0 = stepsize_0*derivativeJ_0
+ update_1 = stepsize_1*derivativeJ_1
 
- print(update_0)
- print(update_1)
+ print("update_0: "+str(update_0))
+ print("update_1: "+str(update_1))
 
  newtheta_0 = theta_0 - update_0
  newtheta_1 = theta_1 - update_1
 
- print(newtheta_0)
- print(newtheta_1)
+ print("newtheta_0: "+str(newtheta_0))
+ print("newtheta_1: "+str(newtheta_1))
  
  difftheta_0 = theta_0 - newtheta_0
  difftheta_1 = theta_1 - newtheta_1
 
- with open(outfileloc+"thetas{}.csv".format(iterationnr), 'w') as f:
+ with open(outfileloc+"thetas{:02d}.csv".format(iterationnr), 'w') as f:
   f.write("theta_0,theta_1\n")
   f.write("{},{}".format(theta_0,theta_1))
   #print("theta_0,theta_1")
   #print("{},{}".format(theta_0,theta_1))
 
 
- if ( abs(difftheta_0) + abs(difftheta_1) < 0.001 ):
+ if ( abs(difftheta_0) < 0.01 and  abs(difftheta_1) < 0.01 ):
   break 
 
  theta_0 = newtheta_0
