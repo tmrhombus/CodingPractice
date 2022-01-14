@@ -8,3 +8,9 @@
 # python
 __pycache__
 *.pyc
+
+# compressed files
+*.tar
+*.tar.*
+*.zip
+*.tgz
