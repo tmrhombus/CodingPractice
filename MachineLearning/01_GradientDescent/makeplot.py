@@ -4,16 +4,24 @@ import pandas as pd
 import seaborn as sb 
 
 filebase = "./outfiles/"
+infilename = "linear2d"
+#infilename = "threepoints"
 
-niterations = 6
-xmin = -3
-xmax = 15
-ymin = -3
-ymax = 15
+niterations = 500
+#xmin = -3
+#xmax = 15
+#ymin = -3
+#ymax = 15
+
+xmin = 0
+xmax = 60
+ymin = 0
+ymax = 200
 
 # Before clustering
 #inputpointfile = pd.read_csv("./data/triplegauss.csv", header=None)
-inputpointfile = pd.read_csv("./data/twopoints.csv")
+#inputpointfile = pd.read_csv("./data/twopoints.csv")
+inputpointfile = pd.read_csv("./data/"+infilename+".csv")
 inputpointfile.columns = ["Some Random X", "Some Random Y"]
 sb.scatterplot(x=inputpointfile["Some Random X"], 
                 y=inputpointfile["Some Random Y"])
@@ -28,8 +36,8 @@ def theformula(t0, t1, x):
  return t0+t1*x
 
 # Now add lines
-for i in range(0, niterations):
- thetafilename = filebase+"thetas"+str(i)+".csv"
+for i in range(0, niterations+1):
+ thetafilename = filebase+"thetas{:04d}.csv".format(i)
  thetafile = pd.read_csv(thetafilename)
  t0 = thetafile.theta_0[0]
  t1 = thetafile.theta_1[0]
@@ -52,15 +60,15 @@ for i in range(0, niterations):
  #y = theformula(t0, t1, x)
  plt.plot(x,y,'-r', label='my line')
 
- plt.savefig(filebase+"fitted"+str(i)+".png")
+ plt.savefig(filebase+"fitted{:04d}.png".format(i))
 
 # # Now add centers
 # for x in range(0, niterations):
 #  plt.figure()
-#  # print()"{:02d}".format(1)
+#  # print()"{:04d}".format(1)
 #  pointsfilename = filebase + "points0"
 #  centersfilename = filebase + "centers"+str(x)
-#  outfilename = filebase + "plot_" + "{:02d}".format(x) + ".png"
+#  outfilename = filebase + "plot_" + "{:04d}".format(x) + ".png"
 #  
 #  
 #  pointsdatafile = pd.read_csv(pointsfilename+".csv")
@@ -96,10 +104,10 @@ for i in range(0, niterations):
 # # now a colored plot with centers
 # x=niterations-1
 # plt.figure()
-# # print()"{:02d}".format(1)
+# # print()"{:04d}".format(1)
 # pointsfilename = filebase + "points0"
 # centersfilename = filebase + "centers"+str(x)
-# outfilename = filebase + "plot_" + "{:02d}".format(x) + "_color.png"
+# outfilename = filebase + "plot_" + "{:04d}".format(x) + "_color.png"
 # 
 # 
 # pointsdatafile = pd.read_csv(pointsfilename+".csv")
@@ -134,9 +142,9 @@ for i in range(0, niterations):
 # # now a colored plot with no centers
 # x=niterations-1
 # plt.figure()
-# # print()"{:02d}".format(1)
+# # print()"{:04d}".format(1)
 # pointsfilename = filebase + "points0"
-# outfilename = filebase + "plot_" + "{:02d}".format(x) + "_colorNOC.png"
+# outfilename = filebase + "plot_" + "{:04d}".format(x) + "_colorNOC.png"
 # 
 # 
 # pointsdatafile = pd.read_csv(pointsfilename+".csv")
