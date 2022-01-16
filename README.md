@@ -36,9 +36,7 @@ Source code for various algorithm implementations
   -includes python plotting script
   
   
- <img src="./meanshift/plots2/animation.gif" width="300"  />
-
- <img src="./meanshift/plots/animation.gif" width="300"  />
+ <img src="./meanshift/plots2/animation.gif" width="300"  />  <img src="./meanshift/plots/animation.gif" width="300"  />
 
  run `./compmeanshift.sh` to compile c++ file \
  then `./meanshift` to run algorithm \
@@ -52,5 +50,13 @@ Source code for various algorithm implementations
 ## MachineLearning
  CS 229 - Machine Learning, Stanford \
  course by Andrew Ng
+ 
+ ### Gradient Descent
+  Batch Gradient Descent: 
+  
+  Function to be minimized 
+   J = (Diff^2 between h(x)=mx[i]+b and y[i]) for each [i] training example
+  <img src="./MachineLearning/01_GradientDescent/outfiles/Jplot.png" width="300"  />   <img src="./MachineLearning/01_GradientDescent/outfiles/animation.gif" width="300"  />
+
  
   
