@@ -28,7 +28,7 @@ theta_1 = 0
 # start iterating
 # stepsize_0 = 0.01/len(datafile.x)
 # stepsize_1 = 0.0001/len(datafile.x)
-stepsize = 0.001 #len(datafile.x)
+stepsize = 0.0001 #len(datafile.x)
 #stepsize = 0.01/len(datafile.x)
 iterationnr = 0
 
@@ -68,7 +68,7 @@ theta_0,theta_1 = bgd.gradientdescent(stepsize, datafile.x, datafile.y, 0.01, 50
 #  difftheta_0 = theta_0 - newtheta_0
 #  difftheta_1 = theta_1 - newtheta_1
 # 
-#  with open(outfileloc+"thetas{:02d}.csv".format(iterationnr), 'w') as f:
+#  with open(outfileloc+"thetas{:03d}.csv".format(iterationnr), 'w') as f:
 #   f.write("theta_0,theta_1\n")
 #   f.write("{},{}".format(theta_0,theta_1))
 #   #print("theta_0,theta_1")
