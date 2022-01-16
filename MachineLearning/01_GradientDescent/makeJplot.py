@@ -63,7 +63,7 @@ plt.xlabel(r'$\Theta_0$')
 plt.ylabel(r'$\Theta_1$')
 #ax.set_zlabel("J(x) = (T0 + T1x[i]-y[i])^2")
 #plt.title("J(x) = (T0 + T1x[i]-y[i])^2")
-plt.title(r'$J(x) = \sum_i(\Theta_00 + \Theta_1 * x[i]-y[i])^2$')
+plt.title(r'$J(x) = \sum_i(\Theta_0 + \Theta_1 * x[i]-y[i])^2$')
 
 plt.savefig(outfileloc+"Jplot.png")
 #plt.show()
