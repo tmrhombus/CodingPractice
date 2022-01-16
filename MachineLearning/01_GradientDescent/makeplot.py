@@ -7,16 +7,16 @@ filebase = "./outfiles/"
 infilename = "linear2d"
 #infilename = "threepoints"
 
-niterations = 500
+niterations = 22
 #xmin = -3
 #xmax = 15
 #ymin = -3
 #ymax = 15
 
-xmin = 0
-xmax = 60
-ymin = 0
-ymax = 200
+xmin = -10
+xmax = 100
+ymin = -10
+ymax = 450
 
 # Before clustering
 #inputpointfile = pd.read_csv("./data/triplegauss.csv", header=None)
