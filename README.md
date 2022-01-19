@@ -56,7 +56,7 @@ Source code for various algorithm implementations
   
   Function to be minimized 
    J = (Diff^2 between h(x)=mx[i]+b and y[i]) for each [i] training example
-  <img src="./MachineLearning/01_GradientDescent/outfiles/Jplot.png" width="300"  />   <img src="./MachineLearning/01_GradientDescent/outfiles/animation.gif" width="300"  />
+  <img src="./MachineLearning/01_GradientDescent/outfiles/Jplot.png" width="300"  />   <img src="./MachineLearning/01_GradientDescent/outfiles/animation.gif" width="300"  />   <img src="./MachineLearning/02_GradientDescentMatrixMethod/outfiles/animation.gif" width="300"  />
 
  
   
