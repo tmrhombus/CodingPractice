@@ -19,13 +19,3 @@ def solvefortheta(X, Y):
  #print(Y.shape)
  return np.dot(np.dot(np.linalg.inv(np.dot(X.T, X)),X.T),Y)
 
- # print(np.dot(X.T, X))
- # print(np.dot(X.T, X).shape)
-
- 
- 
- #print(np.linalg.inv(np.dot(X, X.T)))
-
- #return 1
-
- 
