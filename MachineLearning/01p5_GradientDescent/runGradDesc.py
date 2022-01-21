@@ -38,14 +38,19 @@ thetamatrix = np.zeros(2)
 #print("\n\nthetamatrix")
 #print(thetamatrix)
 
-iterations = 15
-#iterations = 1500
+iterations = 1500
 alpha = 0.01
 
 gdf.computeCost(xmatrix, ymatrix, thetamatrix)
 
 thetamatrix, J_history = gdf.gradientDescent( xmatrix, ymatrix,
                   thetamatrix, alpha, iterations)
+
+
+print("Theta's found by gradient descent: ({},{})".format(thetamatrix[0],thetamatrix[1]))
+
+#print("J_history: ")
+#print(J_history)
 
 
 
