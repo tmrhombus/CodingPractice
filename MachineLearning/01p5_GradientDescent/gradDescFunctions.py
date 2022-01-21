@@ -40,16 +40,41 @@ def computeCost( X, y, theta ):
 
 def gradientDescent( X, y, theta, alpha, num_iters ):
  m = y.size
+ outfileloc = "./output/"
 
  J_history = np.zeros(num_iters)
 
- for itnr in range(0, num_iters):
-  print(itnr)
-  hmy = hminusy(X,y,theta)
+ #for itnr in range(0, num_iters):
+ itnr = 1
+ #with open(outfileloc+"thetas{:04d}.csv".format(itnr), 'w') as f:
+ with open(outfileloc+"thetas.csv", 'w') as tfile:
+  with open(outfileloc+"Js_{}.csv".format(alpha), 'w') as jfile: 
+   tfile.write("theta_0,theta_1,itnr\n")
+   tfile.write("0,0,0\n")
+   jfile.write("J,itnr\n")
+   jfile.write("0,0\n")
+   while(True):
+    if(itnr >= num_iters): break
+    #print(itnr)
 
-  theta = theta - (alpha/m)*np.matmul(hmy,X)
+    hmy = hminusy(X,y,theta)
 
-  J_history[itnr] = computeCost(X,y,theta)
+    theta = theta - (alpha/m)*np.matmul(hmy,X)
+
+    J_history[itnr] = computeCost(X,y,theta)
+
+    tfile.write("{},{},{}\n".format(theta[0],theta[1],itnr))
+    jfile.write("{},{}\n".format(J_history[itnr], itnr))
+    #print("theta_0,theta_1")
+    #print("{},{}".format(theta_0,theta_1))
+
+    # convergence
+    if(abs(J_history[itnr] - J_history[itnr-1]) < 0.0001): 
+     print("Converged at iteration: {}".format(itnr))
+     break
+
+    itnr += 1
+
 
  return theta, J_history
  # theta = theta - (alpha/m)*X''*(X*theta - y)
