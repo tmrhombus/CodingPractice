@@ -15,9 +15,6 @@ def hminusy(X, y, theta):
 def computeCost( X, y, theta ):
  #m = length(y) # number of training examples
 
- #print(type(X)    ) 
- #print(type(y)    ) 
- #print(type(theta))  
  m = y.size
  J = 0
  #print(m)
@@ -27,8 +24,6 @@ def computeCost( X, y, theta ):
  #print(theta.shape)
 
  # h minus y
- #hmy = (np.matmul(theta,X.T) - y) 
- #print( (np.matmul(theta,X.T) - y) )
  hmy = hminusy(X,y,theta)
  #print( hmy )
 
@@ -37,6 +32,33 @@ def computeCost( X, y, theta ):
  #print(J)
 
  return J
+
+def featureNormalize(X):
+ #X_norm = X
+ #nXrows, nXcols = X.shape
+
+ # print("X")
+ # print(X)
+ # axis=0 for columns
+ mu  = X.mean(axis=0)
+ std = X.std(axis=0)
+ # print("mu")
+ # print(mu)
+ # print("std")
+ # print(std)
+ mu[0]  = 0
+ std[0] = 1
+ # print("mu")
+ # print(mu)
+ # print("std")
+ # print(std)
+ # broadcasting, subtract mean from X
+ X_norm = X - mu
+ X_norm = X_norm/std
+ # print("X_norm")
+ # print(X_norm)
+ return X_norm, mu, std
+
 
 def gradientDescent( X, y, theta, alpha, num_iters ):
  m = y.size
@@ -59,12 +81,12 @@ def gradientDescent( X, y, theta, alpha, num_iters ):
 
     hmy = hminusy(X,y,theta)
 
-    print("HminusY : ")
-    print(hmy)
-    print("\n\n")
-    print("X")
-    print(X)
-    print("\n\n")
+#    print("HminusY : ")
+#    print(hmy)
+#    print("\n\n")
+#    print("X")
+#    print(X)
+#    print("\n\n")
 
     theta = theta - (alpha/m)*np.matmul(hmy,X)
 #
