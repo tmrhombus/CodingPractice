@@ -8,22 +8,28 @@ import numpy as np
 dataloc    = "./data/"
 outfileloc = "./outfiles/"
 
-datafile = gdf.importdata( dataloc+"ng_foodcarts2d.csv" )
+datafile = gdf.importdata( dataloc+"ng_housing3d.csv" )
+#datafile = gdf.importdata( dataloc+"ng_foodcarts2d.csv" )
 
 ## initialize matrices
 # X = design matrix = each row is the set of input values
 # m rows because there are m training examples
 # easy in this case b/c there's only one x input 
-x1matrix = datafile.x
-#x1matrix = np.asarray(datafile.x)
+x1matrix = datafile.x1
+x2matrix = datafile.x2
 
 x0matrix = np.ones(x1matrix.size)
-#xmatrix = np.array(datafile.x).T
 
-xmatrix = np.vstack((x0matrix, x1matrix)).T 
+xamatrix = np.vstack((x0matrix, x1matrix))
+xmatrix = np.vstack((xamatrix, x2matrix)).T
+
+#xmatrix = np.vstack((x0matrix, x1matrix)).T 
 
 #print("xmatrix")
 #print(xmatrix)
+
+nXrows, nXcols = xmatrix.shape
+#print("rows {}, cols {}".format(nXrows,nXcols))
 
 
 # Y = matrix of output values
@@ -34,11 +40,11 @@ ymatrix = datafile.y.to_numpy()
 #print(ymatrix)
 
 ## Theta = matrix of parameters
-thetamatrix = np.zeros(2)
+thetamatrix = np.zeros(nXcols)
 #print("\n\nthetamatrix")
 #print(thetamatrix)
 
-iterations = 1500
+iterations = 2
 alpha = 0.01
 
 gdf.computeCost(xmatrix, ymatrix, thetamatrix)

@@ -59,27 +59,29 @@ def gradientDescent( X, y, theta, alpha, num_iters ):
 
     hmy = hminusy(X,y,theta)
 
+    print("HminusY : ")
+    print(hmy)
+    print("\n\n")
+    print("X")
+    print(X)
+    print("\n\n")
+
     theta = theta - (alpha/m)*np.matmul(hmy,X)
-
-    J_history[itnr] = computeCost(X,y,theta)
-
-    tfile.write("{},{},{}\n".format(theta[0],theta[1],itnr))
-    jfile.write("{},{}\n".format(J_history[itnr], itnr))
-    #print("theta_0,theta_1")
-    #print("{},{}".format(theta_0,theta_1))
-
-    # convergence
-    if(abs(J_history[itnr] - J_history[itnr-1]) < 0.0001): 
-     print("Converged at iteration: {}".format(itnr))
-     break
+#
+#    J_history[itnr] = computeCost(X,y,theta)
+#
+#    tfile.write("{},{},{}\n".format(theta[0],theta[1],itnr))
+#    jfile.write("{},{}\n".format(J_history[itnr], itnr))
+#    #print("theta_0,theta_1")
+#    #print("{},{}".format(theta_0,theta_1))
+#
+#    # convergence
+#    if(abs(J_history[itnr] - J_history[itnr-1]) < 0.0001): 
+#     print("Converged at iteration: {}".format(itnr))
+#     break
 
     itnr += 1
 
 
- return theta, J_history
- # theta = theta - (alpha/m)*X''*(X*theta - y)
-
- #J_history(itnr) = computeCost(X, Y, theta)
-
-
-
+ return [1,1], [2,2]
+ #return theta, J_history
