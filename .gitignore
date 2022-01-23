@@ -14,3 +14,6 @@ __pycache__
 *.tar.*
 *.zip
 *.tgz
+
+# pictures unless I want them
+*png
