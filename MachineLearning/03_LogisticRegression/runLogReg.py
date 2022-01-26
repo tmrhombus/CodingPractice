@@ -1,7 +1,6 @@
 #!/bin/python
 
 import logRegFunctions as lrf
-import learn as lrn
 import sys # write file
 import pandas as pd
 
