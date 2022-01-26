@@ -32,8 +32,8 @@ ymax=110
 
 
 ######## # Scatter plot of raw data
-rawoutfilename = outfilebase + "rawdata.png"
-fitoutfilename = outfilebase + "fitted.png"
+rawoutfilename = outfilebase + "testscores_rawdata.png"
+fitoutfilename = outfilebase + "testscores_fitted.png"
 
 data = pd.read_csv(infilename_data)
 #data = pd.read_csv(infilename_data, header=1)
