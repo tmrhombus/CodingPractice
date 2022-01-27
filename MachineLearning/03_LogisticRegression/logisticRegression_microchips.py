@@ -12,6 +12,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+get_ipython().run_line_magic('config', 'InlineBackend.print_figure_kwargs={\'facecolor\' : "w"}')
+
 
 # In[2]:
 
@@ -27,17 +29,13 @@ df=pd.read_csv("./data/ng_microchips.csv", header=None)
 X=df.iloc[:,:-1].values # all rows, all columns except last
 y=df.iloc[:,-1].values  # all rows, last column
 
-
-# In[4]:
-
-
 # print(y)
 # print(X)
 
 
 # ## Plot the original data
 
-# In[5]:
+# In[4]:
 
 
 # not accepted
@@ -54,8 +52,13 @@ marker1_face  = "black"
 marker1_edge  = "black"
 marker1_size  = 18
 
+xmin = -1.
+xmax = 1.2
+ymin = -1.
+ymax = 1.5
 
-# In[6]:
+
+# In[5]:
 
 
 pos , neg = (y==1).reshape(118,1) , (y==0).reshape(118,1)
@@ -75,14 +78,20 @@ plt.scatter(X[neg[:,0],0],X[neg[:,0],1],
 plt.xlabel("Test 1")
 plt.ylabel("Test 2")
 plt.legend(loc="upper right")
-#plt.legend(["Accepted","Rejected"],loc=0)
+
+plt.xlim([xmin,xmax])
+plt.ylim([ymin,ymax])
+
+plt.title("Accept/Reject Microchips Based on Two Tests")
+plt.savefig("./output/microchips_initialdata.png", facecolor="w")
+plt.clf()
 
 
 # ## Feature Mapping
 # combine a and b as new columns of matrix as:
 # $ 1 | a | b | a^2 | ab | b^2 | a^3 | a^2 b | a b^2 | b^3 |$  etc...
 
-# In[7]:
+# In[6]:
 
 
 def mapFeature(x1,x2,degree):
@@ -97,7 +106,7 @@ def mapFeature(x1,x2,degree):
     return out
 
 
-# In[8]:
+# In[7]:
 
 
 X = mapFeature(X[:,0], X[:,1],6) # convert X matrix 
@@ -119,7 +128,7 @@ print(X.shape)
 # $\frac{\partial J(\theta)}{\partial \theta_0} = \frac{1}{m} \sum_{i=1}^m \left[ h_\theta\left( x^{(i)} \right)-y^{(i)} \right]x_0^{(i)}$ for $j=0$\
 # $\frac{\partial J(\theta)}{\partial \theta_j} = \frac{1}{m} \sum_{i=1}^m \left[ h_\theta\left( x^{(i)} \right)-y^{(i)} \right]x_j^{(i)} + \frac{\lambda}{m}\theta_j$ for $j\geq 1$
 
-# In[9]:
+# In[8]:
 
 
 def sigmoid(z):
@@ -130,7 +139,7 @@ def sigmoid(z):
     return 1/ (1 + np.exp(-z))
 
 
-# In[10]:
+# In[9]:
 
 
 def costFunctionReg(theta, X, y ,Lambda):
@@ -155,7 +164,7 @@ def costFunctionReg(theta, X, y ,Lambda):
 
 # ## Test Cost Function
 
-# In[11]:
+# In[10]:
 
 
 # Initialize fitting parameters
@@ -172,7 +181,7 @@ print(grad.shape)
 
 # ## Do Gradient Descent to find best Theta Matrix
 
-# In[12]:
+# In[11]:
 
 
 def gradientDescent(X,y,theta,alpha,num_iters,Lambda):
@@ -194,7 +203,7 @@ def gradientDescent(X,y,theta,alpha,num_iters,Lambda):
     return theta , J_history
 
 
-# In[13]:
+# In[12]:
 
 
 lambdas = [0, 0.5, 1, 5, 100]
@@ -211,7 +220,7 @@ for lam in lambdas:
 
 # ## Plot Cost Function 
 
-# In[14]:
+# In[13]:
 
 
 for jh,lam, col in zip(J_histories, lambdas, colors):
@@ -220,12 +229,16 @@ for jh,lam, col in zip(J_histories, lambdas, colors):
  plt.xlabel("Iteration")
  plt.ylabel("$J(\Theta)$")
  plt.title("Cost function using Gradient Descent")
+
 plt.legend(loc="lower left")
+
+plt.savefig("./output/microchips_J_convergence.png", facecolor="w")
+plt.clf()
 
 
 # ## Plot Decision Boundary
 
-# In[15]:
+# In[14]:
 
 
 def mapFeaturePlot(x1,x2,degree):
@@ -241,7 +254,7 @@ def mapFeaturePlot(x1,x2,degree):
     return out
 
 
-# In[16]:
+# In[15]:
 
 
 fig1, ax1 = plt.subplots()
@@ -274,14 +287,20 @@ for lam,thet,col in zip(lambdas,thetas,colors):
  CS = ax1.contour(u_vals,v_vals,z.T,0,colors=col)
  ax1.clabel(CS, inline=True, fmt="$\lambda$={}".format(lam), fontsize=10)
 
+plt.xlim([xmin,xmax])
+plt.ylim([ymin,ymax])
+
 plt.xlabel("Exam 1 score")
 plt.ylabel("Exam 2 score")
 plt.legend(loc=0)
 
+plt.savefig("./output/microchips_finalfits.png", facecolor="w")
+plt.clf()
+
 
 # ## Model Accuracy
 
-# In[17]:
+# In[16]:
 
 
 def classifierPredict(theta,X):
@@ -293,7 +312,7 @@ def classifierPredict(theta,X):
     return predictions>0
 
 
-# In[18]:
+# In[17]:
 
 
 for thet,lam in zip(thetas,lambdas):
@@ -304,7 +323,7 @@ for thet,lam in zip(thetas,lambdas):
 
 # ## Convert to real python script
 
-# In[19]:
+# In[18]:
 
 
 get_ipython().system('jupyter nbconvert --to script logisticRegression_microchips.ipynb')
