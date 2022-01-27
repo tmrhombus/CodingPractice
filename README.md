@@ -26,6 +26,15 @@ Source code for various algorithm implementations
   
   <img src="./MachineLearning/01p5_GradientDescent/output/result.gif" width="600"  />  
   
+  ### Logistic Regression
+  2D feature vector (mapped to 6th order polynomial) with linear and nonlinear boundaries \
+  best fit found using gradient descent
+  
+ 
+  <img src="./MachineLearning/03_LogisticRegression/output/animation_testscores.gif" width="300"  /> 
+  
+  <img src="./MachineLearning/03_LogisticRegression/output/animation_microchips.gif" width="300"  />   <img src="./MachineLearning/03_LogisticRegression/output/microchips_J_convergence.png" width="300"  /> 
+
   
   
 ## datagenerator
