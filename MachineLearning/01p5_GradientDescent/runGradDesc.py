@@ -54,7 +54,7 @@ np.savetxt("./output/data_renormed.csv",scaleddata,delimiter=',')
 
 
 iterations = 6000
-alpha = 0.003
+alpha = 0.03
 
 gdf.computeCost(xmatrix, ymatrix, thetamatrix)
 
