@@ -106,8 +106,7 @@ for t01,t11,t02,t12,t03,t13,t04,t14,itnrd in \
  #print("{} {} {} {} {} {} {} {} {}".format(itnrd,t01,t11,t02,t12,t03,t13,t04,t14))
 
  #if(itnrd == itnr.size-1): 
- #if(itnrd == 0  or itnrd == itnr.size-1): 
- if(itnrd == 0 or (itnrd < 500 and itnrd%15==0) or (itnrd >= 500 and itnrd < 1500 and  itnrd%50==0) or (itnrd >= 1500 and itnrd%100==0) or itnrd == itnr.size-1): 
+ if(itnrd < 100 or (itnrd < 500 and itnrd%15==0) or (itnrd >= 500 and itnrd < 1500 and  itnrd%50==0) or (itnrd >= 1500 and itnrd%100==0) or itnrd == itnr.size-1): 
 
   xline = np.linspace(rxmin,rxmax,100)
 
@@ -226,24 +225,27 @@ itnr   = jfile_1["itnr"]
  
 for J1, J2, J3, J4, itnrd in zip(J_1, J_2, J_3, J_4, itnr):
  #if(itnrd == 0 or itnrd == itnr.size-1): 
- if(itnrd == 0 or (itnrd < 500 and itnrd%15==0) or (itnrd >= 500 and itnrd < 1500 and  itnrd%50==0) or (itnrd >= 1500 and itnrd%100==0) or itnrd == itnr.size-1): 
+ if(itnrd < 100 or (itnrd < 500 and itnrd%15==0) or (itnrd >= 500 and itnrd < 1500 and  itnrd%50==0) or (itnrd >= 1500 and itnrd%100==0) or itnrd == itnr.size-1): 
  
   fig = plt.figure()
   plt1 = fig.add_subplot()
-  plt1.scatter(itnr, J_1, s=5, c='tab:red',    label=r'$\alpha = 0.03$') 
-  plt1.scatter(itnr, J_2, s=5, c='tab:orange', label=r'$\alpha = 0.01$') 
-  plt1.scatter(itnr, J_3, s=5, c='tab:green',  label=r'$\alpha = 0.003$')
-  plt1.scatter(itnr, J_4, s=5, c='tab:blue',   label=r'$\alpha = 0.001$')
+  plt1.scatter(itnr, J_1, s=3, c='tab:red',    label=r'$\alpha = 0.03$') 
+  plt1.scatter(itnr, J_2, s=3, c='tab:orange', label=r'$\alpha = 0.01$') 
+  plt1.scatter(itnr, J_3, s=3, c='tab:green',  label=r'$\alpha = 0.003$')
+  plt1.scatter(itnr, J_4, s=3, c='tab:blue',   label=r'$\alpha = 0.001$')
 
   plt1.axvline(x=itnrd, color="black")
   plt1.set_ylabel(r"Cost Function $J(\theta)=(1/2m)(X\theta-y)^T(X\theta-y)$")
   plt1.set_xlabel("Iteration Number")
-  plt1.set_xscale("log") #.LogScale #("log")
+  plt1.set_xscale("log") 
+  plt1.set_yscale("log")
 
   plt.title("Iteration {}".format(itnrd))
   #plt.text(1,5,"Iteration {}".format(itnrd))
   plt.legend(loc='upper right')
   #plt.legend(loc='upper left', bbox_to_anchor=(0, 1))
+ 
+  plt.tight_layout()
 
   plt.savefig(outfilebase+"J_{:04d}.png".format(itnrd))
   plt.clf()
