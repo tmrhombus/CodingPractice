@@ -21,12 +21,105 @@ scaleddata.png      \
 scaleddata.png      \
 scaleddata.png      \
 fitted0000.png      \
+fitted0001.png      \
+fitted0002.png      \
+fitted0003.png      \
+fitted0004.png      \
+fitted0005.png      \
+fitted0006.png      \
+fitted0007.png      \
+fitted0008.png      \
+fitted0009.png      \
+fitted0010.png      \
+fitted0011.png      \
+fitted0012.png      \
+fitted0013.png      \
+fitted0014.png      \
 fitted0015.png      \
+fitted0016.png      \
+fitted0017.png      \
+fitted0018.png      \
+fitted0019.png      \
+fitted0020.png      \
+fitted0021.png      \
+fitted0022.png      \
+fitted0023.png      \
+fitted0024.png      \
+fitted0025.png      \
+fitted0026.png      \
+fitted0027.png      \
+fitted0028.png      \
+fitted0029.png      \
 fitted0030.png      \
+fitted0031.png      \
+fitted0032.png      \
+fitted0033.png      \
+fitted0034.png      \
+fitted0035.png      \
+fitted0036.png      \
+fitted0037.png      \
+fitted0038.png      \
+fitted0039.png      \
+fitted0040.png      \
+fitted0041.png      \
+fitted0042.png      \
+fitted0043.png      \
+fitted0044.png      \
 fitted0045.png      \
+fitted0046.png      \
+fitted0047.png      \
+fitted0048.png      \
+fitted0049.png      \
+fitted0050.png      \
+fitted0051.png      \
+fitted0052.png      \
+fitted0053.png      \
+fitted0054.png      \
+fitted0055.png      \
+fitted0056.png      \
+fitted0057.png      \
+fitted0058.png      \
+fitted0059.png      \
 fitted0060.png      \
+fitted0061.png      \
+fitted0062.png      \
+fitted0063.png      \
+fitted0064.png      \
+fitted0065.png      \
+fitted0066.png      \
+fitted0067.png      \
+fitted0068.png      \
+fitted0069.png      \
+fitted0070.png      \
+fitted0071.png      \
+fitted0072.png      \
+fitted0073.png      \
+fitted0074.png      \
 fitted0075.png      \
+fitted0076.png      \
+fitted0077.png      \
+fitted0078.png      \
+fitted0079.png      \
+fitted0080.png      \
+fitted0081.png      \
+fitted0082.png      \
+fitted0083.png      \
+fitted0084.png      \
+fitted0085.png      \
+fitted0086.png      \
+fitted0087.png      \
+fitted0088.png      \
+fitted0089.png      \
 fitted0090.png      \
+fitted0091.png      \
+fitted0092.png      \
+fitted0093.png      \
+fitted0094.png      \
+fitted0095.png      \
+fitted0096.png      \
+fitted0097.png      \
+fitted0098.png      \
+fitted0099.png      \
 fitted0105.png      \
 fitted0120.png      \
 fitted0135.png      \
@@ -124,11 +217,6 @@ fitted5999.png      \
 fitted5999.png      \
 fitted5999.png      \
 fitted5999.png      \
-fitted5999.png      \
-fitted5999.png      \
-fitted5999.png      \
-fitted5999.png      \
-fitted5999.png      \
 finalfitted.png     \
 finalfitted.png     \
 finalfitted.png     \
@@ -151,107 +239,3 @@ finalfitted.png     \
 finalfitted.png     \
 animation_fits.gif
 
-
-
-
-
-#J_0000.png
-#J_0015.png
-#J_0030.png
-#J_0045.png
-#J_0060.png
-#J_0075.png
-#J_0090.png
-#J_0105.png
-#J_0120.png
-#J_0135.png
-#J_0150.png
-#J_0165.png
-#J_0180.png
-#J_0195.png
-#J_0210.png
-#J_0225.png
-#J_0240.png
-#J_0255.png
-#J_0270.png
-#J_0285.png
-#J_0300.png
-#J_0315.png
-#J_0330.png
-#J_0345.png
-#J_0360.png
-#J_0375.png
-#J_0390.png
-#J_0405.png
-#J_0420.png
-#J_0435.png
-#J_0450.png
-#J_0465.png
-#J_0480.png
-#J_0495.png
-#J_0500.png
-#J_0550.png
-#J_0600.png
-#J_0650.png
-#J_0700.png
-#J_0750.png
-#J_0800.png
-#J_0850.png
-#J_0900.png
-#J_0950.png
-#J_1000.png
-#J_1050.png
-#J_1100.png
-#J_1150.png
-#J_1200.png
-#J_1250.png
-#J_1300.png
-#J_1350.png
-#J_1400.png
-#J_1450.png
-#J_1500.png
-#J_1600.png
-#J_1700.png
-#J_1800.png
-#J_1900.png
-#J_2000.png
-#J_2100.png
-#J_2200.png
-#J_2300.png
-#J_2400.png
-#J_2500.png
-#J_2600.png
-#J_2700.png
-#J_2800.png
-#J_2900.png
-#J_3000.png
-#J_3100.png
-#J_3200.png
-#J_3300.png
-#J_3400.png
-#J_3500.png
-#J_3600.png
-#J_3700.png
-#J_3800.png
-#J_3900.png
-#J_4000.png
-#J_4100.png
-#J_4200.png
-#J_4300.png
-#J_4400.png
-#J_4500.png
-#J_4600.png
-#J_4700.png
-#J_4800.png
-#J_4900.png
-#J_5000.png
-#J_5100.png
-#J_5200.png
-#J_5300.png
-#J_5400.png
-#J_5500.png
-#J_5600.png
-#J_5700.png
-#J_5800.png
-#J_5900.png
-#J_5999.png
