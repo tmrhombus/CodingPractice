@@ -13,6 +13,11 @@ Source code for various algorithm implementations
   
  <img src="./meanshift/plots2/animation.gif" width="300"  />  <img src="./meanshift/plots/animation.gif" width="300"  />
 
+## maze solver
+ python implementation to find the minimum number of steps to complete a maze
+ 
+ <img src="./mazesolver/outfiles/maze1/animation.gif" width="300">   <img src="./mazesolver/outfiles/maze2/animation.gif" width="300">
+
 ## MachineLearning
  CS 229 - Machine Learning, Stanford \
  course by Andrew Ng
