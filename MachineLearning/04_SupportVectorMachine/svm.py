@@ -8,44 +8,119 @@ mat = loadmat("./data/ex6data1.mat")
 X = mat["X"]
 y = mat["y"]
 
-# plot initial data
-#m,n = X.shape
 
-# make T/F lists of y values
-pos,neg= (y==1), (y==0)
+## Plot Initial Data
 
-#print(pos)
-#print("\n\n")
-#print(neg)
+# set plotting values
+
+# not accepted
+marker0_type  = "o" 
+marker0_color = "yellow"
+marker0_face  = "yellow"
+marker0_edge  = "black"
+marker0_size  = 18
+
+# accepted 
+marker1_type  = "+" 
+marker1_color = "black"
+marker1_face  = "black"
+marker1_edge  = "black"
+marker1_size  = 18
+
+x1min = -0.2
+x1max = 4.2
+x2min = 1.5
+x2max = 5.0
+
+# make ndarray of [T, F, F, ...] based on y values
+accept,reject = (y==1).ravel(), (y==0).ravel()
+
+plt.scatter(X[accept,0],X[accept,1],
+            c=marker1_color,
+            marker=marker1_type,
+            s=marker1_size,
+            label="Passed"
+            )
+
+plt.scatter(X[reject,0],X[reject,1],
+            marker=marker0_type,
+            color=marker0_color,
+            facecolors=marker0_face,
+            edgecolors=marker0_edge,
+            s=marker0_size,
+            label="Failed"
+            )
 
 
-
-plt.scatter(X[pos[:,0],0],X[pos[:,0],1],c="r",marker="+",s=50)
-plt.scatter(X[neg[:,0],0],X[neg[:,0],1],c="y",marker="o",s=50)
+plt.xlim([x1min,x1max])
+plt.ylim([x2min,x2max])
 
 plt.title("Initial Dataset")
-plt.xlabel("X1")
-plt.ylabel("X2")
+plt.xlabel("Test 1")
+plt.ylabel("Test 2")
+plt.legend(loc="upper right")
 
 plt.savefig("./output/ex6data1_initialdata.png", facecolor="w")
 
-# ## import Support Vector Classification
-# #from sklearn.svm import SVC
-# #classifier = SVC(kernel="linear")
-# #classifier.fit(X,np.ravel(y))
-# #
-# #
-# #plt.figure(figsize=(8,6))
-# #plt.scatter(X[pos[:,0],0],X[pos[:,0],1],c="r",marker="+",s=50)
-# #plt.scatter(X[neg[:,0],0],X[neg[:,0],1],c="y",marker="o",s=50)
-# #
-# #plt.savefig("./output/ex6data1_SVMlinearkernel.png", facecolor="w")
-# #
-# ## plotting the decision boundary
-# #X_1,X_2 = np.meshgrid(np.linspace(X[:,0].min(),X[:,1].max(),num=100),np.linspace(X[:,1].min(),X[:,1].max(),num=100))
-# #plt.contour(X_1,X_2,classifier.predict(np.array([X_1.ravel(),X_2.ravel()]).T).reshape(X_1.shape),1,colors="b")
-# #plt.xlim(0,4.5)
-# #plt.ylim(1.5,5)
+plt.clf()
+
+## Make SVM Classifier
+# import Support Vector Classification
+from sklearn.svm import SVC
+
+# various values of C in L1 Soft Margin SVM
+Cs = [1,5,25,100]
+for C in Cs:
+ # make classifier and do fit
+ mysvm = SVC(C=C, kernel="linear")
+ mysvm.fit(X, np.ravel(y))
+
+ fig, ax = plt.subplots()
+
+ # plot the data
+ plt.scatter(X[accept,0],X[accept,1],
+             c=marker1_color,
+             marker=marker1_type,
+             s=marker1_size,
+             label="Passed"
+             )
+ 
+ plt.scatter(X[reject,0],X[reject,1],
+             marker=marker0_type,
+             color=marker0_color,
+             facecolors=marker0_face,
+             edgecolors=marker0_edge,
+             s=marker0_size,
+             label="Failed"
+             )
+ 
+ plt.xlim([x1min,x1max])
+ plt.ylim([x2min,x2max])
+ 
+ plt.title("Linear Kernel Decision Boundry, C = {}".format(C))
+ plt.xlabel("Test 1")
+ plt.ylabel("Test 2")
+ plt.legend(loc="upper right")
+
+ # add SVM decision boundry line to plot
+ # make grid of input x1s and x2s
+ x1linspace=np.linspace(x1min,x1max,100)
+ x2linspace=np.linspace(x2min,x2max,100)
+ x1grid,x2grid = np.meshgrid(x1linspace, x2linspace)
+ 
+ # SVM takes (x1, x2) values so unravel and combine xs
+ inputx1s = x1grid.ravel()
+ inputx2s = x2grid.ravel()
+ inputx = np.vstack([inputx1s,inputx2s]).T
+ 
+ # zs for contour must match dimension of grid, hence reshape again
+ plt.contour(x1grid,x2grid,mysvm.predict(inputx).reshape(x1grid.shape),1,colors="b")
+
+ t1 = plt.text(0.05,0.05,"C = {}".format(C),transform=ax.transAxes)
+ t1.set_bbox(dict(facecolor='white', alpha=1, edgecolor='red'))
+
+ plt.savefig("./output/ex6data1_SVMlinearkernel_C{:03d}.png".format(C), facecolor="w")
+
 # #
 # ## Test C = 100
 # #classifier2 = SVC(C=100,kernel="linear")
