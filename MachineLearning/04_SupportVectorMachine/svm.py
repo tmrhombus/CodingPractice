@@ -380,7 +380,7 @@ values = [0.01,0.03,0.1,0.3,1,3,10,30]
 C,G,score = findBestParams(X,y.ravel(),Xval,yval.ravel(),values)
 
 bestclassifier = SVC(C=C, gamma=G, kernel="rbf")
-bestclassifier.fit(X,y.ravel)
+bestclassifier.fit(X,y.ravel())
 
 # plot it
 
