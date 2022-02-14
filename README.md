@@ -40,8 +40,16 @@ Source code for various algorithm implementations
   
   <img src="./MachineLearning/03_LogisticRegression/output/animation_microchips.gif" width="300"  />   <img src="./MachineLearning/03_LogisticRegression/output/microchips_J_convergence.png" width="300"  /> 
 
+  ### Support Vector Machine
+  Optimal Margin Classifier + Kernel Trick = Support Vector Machine
   
-  
+  L1 Norm Soft Margin Support Vector Machine
+
+  <img src="./MachineLearning/04_SupportVectorMachine/output/animation2.gif" width="300"  />   <img src="./MachineLearning/04_SupportVectorMachine/output/animation_ex2.gif" width="300"  /> 
+
+
+
+
 ## datagenerator
  code to generate fake datasets
  - normal distributions
