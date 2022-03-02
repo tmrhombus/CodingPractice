@@ -48,6 +48,9 @@ Source code for various algorithm implementations
   <img src="./MachineLearning/04_SupportVectorMachine/output/animation2.gif" width="300"  />   <img src="./MachineLearning/04_SupportVectorMachine/output/animation_ex2.gif" width="300"  /> 
 
 
+### Neural Network - Handwritten Number Recognition
+
+<img src="./MachineLearning/05_NeuralNetwork/output/result.gif" width="800"  />  
 
 
 ## datagenerator
