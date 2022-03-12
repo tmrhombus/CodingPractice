@@ -77,4 +77,7 @@ Source code for various algorithm implementations
  - sort an array from min to max (selection sort)
  - find the sum of all numbers between a and b
 
-
+## sorting
+ python examples of sorting algorithms
+ - quicksort
+ - bubblesort
