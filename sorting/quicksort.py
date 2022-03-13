@@ -1,6 +1,9 @@
 
 def sort(array=[12,4,5,6,7,3,1,15]):
-    """Sort the array by using quicksort."""
+    """
+    Sort the array by using quicksort
+    average O(nlogn), worst case O(n^2)
+    """
 
     less = []
     equal = []
@@ -8,6 +11,8 @@ def sort(array=[12,4,5,6,7,3,1,15]):
 
     if len(array) > 1:
         pivot = array[0]
+        # this choice of pivot causes worst-case behavior in sorted lists
+        # better choice is median of first,last,middle elements (Sedgewick)
         for x in array:
             if x < pivot:
                 less.append(x)
