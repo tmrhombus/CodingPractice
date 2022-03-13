@@ -1,3 +1,7 @@
+
+# Order( n log(n) ) in time
+ # list is split in log(n) calls,
+ # merging takes linear time in each call
 def mergeSort(myList):
  if len(myList) > 1:
   mid = len(myList) // 2
