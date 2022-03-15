@@ -61,7 +61,7 @@ class HashSet:
       Initialize hash_table as an array of length key_space 
        with an empty checkingvalues() at each entry of array
       '''
-      self.key_space = 2096 # how long the hash table is
+      self.key_space = 10 # how long the hash table is
       self.hash_table=[checkingvalues() for i in range(self.key_space)]
 
    # make hash_key from value you give it, just mod by length of h_t
@@ -99,33 +99,47 @@ class HashSet:
     
 
 ### Checks
-print(" {}".format( checkingvalues() ))
-hash_table=[checkingvalues() for i in range(10)]
-print(" {}".format( hash_table ) )
 
-        
-ob = HashSet()
-print(ob.hash_values(5))
-print("Add 5 ")
-ob.add(5)
-print(ob.hash_values(6))
-print("Add 6 ")
-ob.add(6)
-print(ob.hash_values(7))
-print("Add 7 ")
-ob.add(7)
-print("Contains 5 : ",ob.contains(5))
-print("Contains 7: ",ob.contains(7))
-print("Contains 10 : ",ob.contains(10))
-print(ob.hash_values(2))
-print("Add 2 ")
-ob.add(2)
-print(ob.hash_values(3))
-print("Add 3 ")
-ob.add(3)
-print("Contains 2 : ",ob.contains(2))
-print("Remove 2 ")
-ob.remove(2)
-print("Contains 2 : ",ob.contains(2))
-print("Contains 3 : ",ob.contains(3))
-ob.display()
+# make a new HashSet 
+hs = HashSet()
+print("Hash Values for {},{},{} are {},{},{}".format( \
+ 1, 5, 11, hs.hash_values(1), hs.hash_values(5), hs.hash_values(11) ))
+
+print("Adding these values to hash_table")
+hs.add(1)
+hs.add(5)
+hs.add(11)
+
+print("Check if these values are in hash table")
+print(" {} : {}".format(1,hs.contains(1)))
+print(" {} : {}".format(5,hs.contains(5)))
+print(" {} : {}".format(11,hs.contains(11)))
+print(" {} : {}".format(16,hs.contains(16)))
+
+hs.display()
+
+#
+#print(hs.hash_values(5))
+#print("Add 5 ")
+#hs.add(5)
+#print(hs.hash_values(6))
+#print("Add 6 ")
+#hs.add(6)
+#print(hs.hash_values(7))
+#print("Add 7 ")
+#hs.add(7)
+#print("Contains 5 : ",hs.contains(5))
+#print("Contains 7: ",hs.contains(7))
+#print("Contains 10 : ",hs.contains(10))
+#print(hs.hash_values(2))
+#print("Add 2 ")
+#hs.add(2)
+#print(hs.hash_values(3))
+#print("Add 3 ")
+#hs.add(3)
+#print("Contains 2 : ",hs.contains(2))
+#print("Remove 2 ")
+#hs.remove(2)
+#print("Contains 2 : ",hs.contains(2))
+#print("Contains 3 : ",hs.contains(3))
+#hs.display()
