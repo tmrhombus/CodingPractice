@@ -2,34 +2,35 @@
 #checking the values and will return the output class
 
 # These are the values in the hash table
+# each one is itself an array to resolve collisions
 class checkingvalues:
-   #initialization function which has list mathfun
+   #initialization function which has list klist
    def __init__(self):
-      self.mathfun=[]
+      self.klist=[]
      
    #update vales function
    def update(self, key):
       found=False
-      for i,k in enumerate(self.mathfun):
+      for i,k in enumerate(self.klist):
          if key==k:
-            self.mathfun[i]=key
+            self.klist[i]=key
             found=True
             break
       if not found:
-         self.mathfun.append(key)
+         self.klist.append(key)
     
    #get values function
    def get(self, key):
-      for k in self.mathfun:
+      for k in self.klist:
          if k==key:
             return True
       return False
 
    #remove values function
    def remove(self, key):
-      for i,k in enumerate(self.mathfun):
+      for i,k in enumerate(self.klist):
          if key==k:
-            del self.mathfun[i]
+            del self.klist[i]
  
 #class HashSet main class
 class HashSet:
@@ -60,7 +61,7 @@ class HashSet:
    def display(self):
        ls=[]
        for i in self.hash_table:
-           if len(i.mathfun)!=0:ls.append(i.mathfun[0])
+           if len(i.klist)!=0:ls.append(i.klist[0])
        print(ls)
   
     
