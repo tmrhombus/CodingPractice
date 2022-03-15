@@ -3,6 +3,8 @@
 # Simple Hash Table implementation
 # https://blog.chapagain.com.np/hash-table-implementation-in-python-data-structures-algorithms/
 # https://www.pythonpool.com/python-hashset/
+# https://stephenagrice.medium.com/how-to-implement-a-hash-table-in-python-1eb6c55019fd
+# https://github.com/pagekeysolutions/education/blob/master/HashTable/hashtable.py
 
 class checkingvalues:
    '''
