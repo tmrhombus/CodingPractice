@@ -93,7 +93,9 @@ class HashSet:
       ''' print the full hash_table '''
       ls=[]
       for i in self.hash_table:
-          if len(i.klist)!=0: ls.append(i.klist[0])
+          if len(i.klist)!=0:
+             for j in range(len(i.klist)):
+               ls.append(i.klist[j])
       print(ls)
   
     
@@ -117,6 +119,8 @@ print(" {} : {}".format(11,hs.contains(11)))
 print(" {} : {}".format(16,hs.contains(16)))
 
 hs.display()
+
+
 
 #
 #print(hs.hash_values(5))
