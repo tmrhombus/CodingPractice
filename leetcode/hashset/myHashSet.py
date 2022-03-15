@@ -1,29 +1,29 @@
 #!/bin/python
 
 class checkingvalues:
-'''
-Helper class for HashSet class
-
-These are the entries in the hash table
-Each entry is itself an array (named klist) to 
- handle collisions of multiple values hashing 
- to the same klist
-Functions are defined to
- update: add a value to klist
- get: check if value is in klist
- remove: remove a value from klist
-'''
+   '''
+   Helper class for HashSet class
+   
+   These are the entries in the hash table
+   Each entry is itself an array (named klist) to 
+    handle collisions of multiple values hashing 
+    to the same klist
+   Functions are defined to
+    update: add a value to klist
+    get: check if value is in klist
+    remove: remove a value from klist
+   '''
    #initialization function to define array klist
    def __init__(self):
       self.klist=[]
      
    #update vales function
    def update(self, key):
-   '''
-   Go through klist, looking for key
-   If key is already in klist, do nothing
-   If key isn't in klist, add it to the end
-   '''
+      '''
+      Go through klist, looking for key
+      If key is already in klist, do nothing
+      If key isn't in klist, add it to the end
+      '''
       found=False
       for i,k in enumerate(self.klist):
          if key==k:
@@ -35,10 +35,10 @@ Functions are defined to
     
    #get values function
    def get(self, key):
-   '''
-   return True if key in klist
-          False if key isn't there
-   '''
+      '''
+      return True if key in klist
+             False if key isn't there
+      '''
       for k in self.klist:
          if k==key:
             return True
@@ -46,9 +46,9 @@ Functions are defined to
 
    #remove values function
    def remove(self, key):
-   '''
-   if key is in klist, delete it
-   '''
+      '''
+      if key is in klist, delete it
+      '''
       for i,k in enumerate(self.klist):
          if key==k:
             del self.klist[i]
@@ -76,25 +76,25 @@ class HashSet:
 
    #add function
    def add(self, key):
-   ''' add key to hash_table in location key % key_space '''
+      ''' add key to hash_table in location key % key_space '''
       self.hash_table[self.hash_values(key)].update(key)
 
    #remove function
    def remove(self, key):
-   ''' remove key from hash_table '''
+      ''' remove key from hash_table '''
       self.hash_table[self.hash_values(key)].remove(key)
 
    #contains function
    def contains(self, key): 
-   ''' check if klist contains key '''
+      ''' check if klist contains key '''
       return self.hash_table[self.hash_values(key)].get(key)
 
    def display(self):
-   ''' print the full hash_table '''
-       ls=[]
-       for i in self.hash_table:
-           if len(i.klist)!=0:ls.append(i.klist[0])
-       print(ls)
+      ''' print the full hash_table '''
+      ls=[]
+      for i in self.hash_table:
+          if len(i.klist)!=0: ls.append(i.klist[0])
+      print(ls)
   
     
 
