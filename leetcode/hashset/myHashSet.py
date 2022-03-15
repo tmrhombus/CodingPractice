@@ -1,5 +1,9 @@
 #!/bin/python
 
+# Simple Hash Table implementation
+# https://blog.chapagain.com.np/hash-table-implementation-in-python-data-structures-algorithms/
+# https://www.pythonpool.com/python-hashset/
+
 class checkingvalues:
    '''
    Helper class for HashSet class
