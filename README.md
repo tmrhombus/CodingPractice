@@ -81,3 +81,10 @@ Source code for various algorithm implementations
  python examples of sorting algorithms
  - quicksort
  - bubblesort
+
+ ## hash sets
+  python implementation of a hash set, then using the hash set to solve a few problems
+  - check if an array contains any duplicate numbers
+  - find the intersection of two arrays
+  - determine if an integer is "happy" (number theory definition) 
+    https://en.wikipedia.org/wiki/Happy_number
