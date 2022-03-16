@@ -33,9 +33,9 @@ def isithappy(thenumber):
   for i in digitized:
    squaresum += i**2
 
-  print("Current Number: {}".format(currentnumber))
-  print(" Digitized: {}".format(digitized))
-  print(" Square Sum: {}".format(squaresum))
+  print("  Current Number: {}".format(currentnumber))
+  print("   Digitized: {}".format(digitized))
+  print("   Square Sum: {}".format(squaresum))
 
   if squaresum==1: return True
 
@@ -47,8 +47,10 @@ def isithappy(thenumber):
  return False
 
 
+numberstotest = [2,62,23452,773,19]
+for mynumber in numberstotest:
 
-mynumber = 2
-
-print("The number {} is happy: {}".format(mynumber, isithappy(mynumber)))
+ print("Testing number {}".format(mynumber))
+ print("The number {} is happy: {}\n".format(mynumber, isithappy(mynumber)))
+ 
  
