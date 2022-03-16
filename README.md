@@ -81,6 +81,7 @@ Source code for various algorithm implementations
  python examples of sorting algorithms
  - quicksort
  - bubblesort
+ - mergesort
 
  ## hash sets
   python implementation of a hash set, then using the hash set to solve a few problems
