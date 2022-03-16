@@ -17,3 +17,38 @@
 # 8^2 + 2^2 = 68
 # 6^2 + 8^2 = 100
 # 1^2 + 0^2 + 0^2 = 1
+
+import myHashSet as mhs
+
+def isithappy(thenumber):
+
+ alreadyseen = mhs.HashSet()
+ alreadyseen.add(thenumber)
+
+ currentnumber = thenumber
+ while True:
+  # split the number into an array of digits
+  digitized = [int(d) for d in str(currentnumber)]
+  squaresum = 0
+  for i in digitized:
+   squaresum += i**2
+
+  print("Current Number: {}".format(currentnumber))
+  print(" Digitized: {}".format(digitized))
+  print(" Square Sum: {}".format(squaresum))
+
+  if squaresum==1: return True
+
+  if alreadyseen.contains(squaresum): break
+  else:
+   alreadyseen.add(squaresum)
+   currentnumber = squaresum
+   
+ return False
+
+
+
+mynumber = 19
+
+print("The number {} is happy: {}".format(mynumber, isithappy(mynumber)))
+ 
