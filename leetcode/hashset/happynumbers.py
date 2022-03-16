@@ -48,7 +48,7 @@ def isithappy(thenumber):
 
 
 
-mynumber = 19
+mynumber = 2
 
 print("The number {} is happy: {}".format(mynumber, isithappy(mynumber)))
  
