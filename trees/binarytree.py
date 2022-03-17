@@ -40,3 +40,36 @@ class BinaryTree:
    new_node = BinaryTree(value)
    new_node.right_child = self.right_child
    self.right_child = new_node
+
+ #### Depth First Search Algos
+ # an example tree looks like
+ # 
+ #        1
+ #       / \
+ #     2     5
+ #    / \   / \
+ #   3   4 6   7
+
+ def pre_order(self):
+  '''
+  Look left, left, left, until hitting leaf
+   then backtrack up, go right, recurse
+  Result on test tree: 1 2 3 4 5 6 7
+  '''
+  print(self.value)
+ 
+  if self.left_child:
+   self.left_child.pre_order()
+ 
+  if self.right_child:
+   self.right_child.pre_order()
+
+
+
+
+
+
+
+
+
+
