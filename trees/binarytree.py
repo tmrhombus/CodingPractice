@@ -64,8 +64,31 @@ class BinaryTree:
   if self.right_child:
    self.right_child.pre_order()
 
+ def in_order(self):
+  '''
+  Look left, then node, then right
+  Result on test tree: 3 2 4 1 6 5 7
+  '''
+  if self.left_child:
+   self.left_child.in_order()
 
+  print(self.value)
 
+  if self.right_child:
+   self.right_child.in_order()
+
+ def post_order(self):
+  '''
+  Look left, then right, then up to node
+  Result on test tree: 3 4 2 6 7 5 1
+  '''
+  if self.left_child:
+   self.left_child.post_order()
+
+  if self.right_child:
+   self.right_child.post_order()
+
+  print(self.value)
 
 
 
