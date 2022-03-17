@@ -71,4 +71,6 @@ print("Post Order")
 root.post_order()
 print("\n")
 
-
+print("Breadth-First Search")
+root.bfs()
+print("\n")
