@@ -92,9 +92,29 @@ class BinaryTree:
 
   print(self.value)
 
+ #### Breadth First Search
+ # an example tree looks like
+ # 
+ #        1
+ #       / \
+ #     2     5
+ #    / \   / \
+ #   3   4 6   7
+ #
+ # Initialize with root node at front of queue
+ # While queue is not empty:
+ # 1. print value of node at front of queue
+ # 2. add children of node to end of queue
 
-
-
+ # Should give 1 2 5 3 4 6 7 
+ # Queue looks like:
+ #   1        print 1
+ #   2 5      print 2
+ #   5 3 4    print 5
+ #   3 4 6 7  print 3
+ #   4 6 7    print 4
+ #   6 7      print 6
+ #   7        print 7
 
 
 
