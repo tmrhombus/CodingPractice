@@ -35,4 +35,21 @@ class BinarySearchTree:
    #  make a new right child with value
    self.right_child = BinarySearchTree(value)
 
+ def find_node(self, value):
+  ''' Search tree for node '''
+  if value < self.value and self.left_child:
+   # if searchval is less than nodeval,
+   #  and there is a left child,
+   #  go there and search again with searchval
+   return self.left_child.find_node(value)
+  if value > self.value and self.right_child:
+   # if searchval is greater than nodeval,
+   #  and there is a right child,
+   #  go there and search again with searchval
+   return self.right_child.find_node(value)
+
+  return value == self.value
+  # if searchval == nodeval, return true
+
+
 
