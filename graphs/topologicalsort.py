@@ -10,9 +10,9 @@ class Graph:
         self.V = vertices # No. of vertices
  
     # function to add an edge to graph
+    # from u to v
     def addEdge(self, u, v):
         self.graph[u].append(v)
- 
  
     # The function to do Topological Sort.
     def topologicalSort(self):
@@ -23,8 +23,14 @@ class Graph:
          
         # Traverse adjacency lists to fill indegrees of
            # vertices.  This step takes O(V + E) time
+        # For each vertex (i)
+        #  look at all of the vertices it points to (j)
+        #  add 1 to in_degree of vertex j
+        #   (because it's pointed to by vertex i)
         for i in self.graph:
+        # i is the vertex 
             for j in self.graph[i]:
+            # j is adjacent to i
                 in_degree[j] += 1
  
         # Create an queue and enqueue all vertices with
