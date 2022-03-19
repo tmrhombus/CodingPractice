@@ -70,7 +70,9 @@ class Graph:
         # Check if there was a cycle
         if cnt != self.V:
             print ("There exists a cycle in the graph")
+            return []
         else :
             # Print topological order
-            print (top_order)
+            #print (top_order)
+            return top_order
  
