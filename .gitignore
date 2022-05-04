@@ -17,3 +17,6 @@ __pycache__
 
 # pictures unless I want them
 *png
+
+# generated files
+*csv
