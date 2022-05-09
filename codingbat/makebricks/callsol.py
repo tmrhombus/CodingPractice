@@ -1,9 +1,9 @@
 
 import solution as sol
 
-nl = 4
+nl = 10
 nb = 2
-goal = 11
+goal = 16
 
 
 ispossible = sol.solution(nl, nb, goal)
