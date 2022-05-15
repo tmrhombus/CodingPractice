@@ -9,16 +9,14 @@ def solution( target ):
  # initialize hashset
  s = set()
 
- twoback=0
  lastone=1
  thisone=1
 
  while thisone < target:
-  nextone = thisone+lastone+twoback
+  nextone = thisone+lastone
   if nextone%2 == 0:
    s.add(nextone)
 
-  twoback=lastone
   lastone=thisone
   thisone=nextone
 
