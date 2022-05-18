@@ -3,3 +3,17 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 
 Find the largest palindrome made from the product of two 3-digit numbers.
 
+
+Output:
+Largest 1x1-digit palendrome is 1 x 9 = 9
+Largest 1x2-digit palendrome is 9 x 92 = 828
+Largest 1x3-digit palendrome is 9 x 902 = 8118
+Largest 2x1-digit palendrome is 92 x 9 = 828
+Largest 2x2-digit palendrome is 91 x 99 = 9009
+Largest 2x3-digit palendrome is 99 x 951 = 94149
+Largest 3x1-digit palendrome is 902 x 9 = 8118
+Largest 3x2-digit palendrome is 951 x 99 = 94149
+Largest 3x3-digit palendrome is 913 x 993 = 906609
+Largest 4x1-digit palendrome is 9922 x 9 = 89298
+Largest 4x2-digit palendrome is 9911 x 99 = 981189
+Largest 4x3-digit palendrome is 9913 x 983 = 9744479
