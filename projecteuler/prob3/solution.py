@@ -36,6 +36,12 @@ def solution( target ):
   print(" \n\n")
 
   
+
+ print("Done!")
+ print("List of factors: ")
+ print(pfactors)
+
+ return max(pfactors)
  
 
 def findminfactor( x ):
