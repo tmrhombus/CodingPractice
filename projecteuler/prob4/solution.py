@@ -15,6 +15,21 @@ def solution( ):
  the first palendrome we find will be the largest
  """
 
+ maxi = -1
+ maxj = -1
+ maxprod = -1
+ for i in range( 100,1000 ):
+  for j in range( 100,1000 ):
+   #print(" {}*{} = {}    :: {}".format( i,j,i*j,isapalendrome(i*j) ))
+   if ( isapalendrome(i*j) and maxprod < i*j ):
+    #print("------------------------")
+    maxi = i
+    maxj = j
+    maxprod = i*j 
+   
+ return maxi, maxj, maxprod
+
+
 def isapalendrome( x ):
  """
  Checks if an integer is a palendrome
