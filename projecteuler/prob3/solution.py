@@ -30,8 +30,12 @@ def findminfactor( x ):
 
  i=2
  while i<x:
-  
+  if x%i == 0: 
+   return i
+  else:
+    i = i+1  
 
+ return -1
 
 
 
