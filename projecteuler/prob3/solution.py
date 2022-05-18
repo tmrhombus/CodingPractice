@@ -27,19 +27,17 @@ def solution( target ):
   print("list of pfactors: ")
   pfactors.add(pfac)
   print(pfactors)
+  print("\n")
   
   if pfac != target:
    target = target/pfac
   else:
     break
  
-  print(" \n\n")
-
-  
-
  print("Done!")
  print("List of factors: ")
  print(pfactors)
+ print("\n")
 
  return max(pfactors)
  
