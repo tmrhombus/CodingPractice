@@ -16,11 +16,26 @@ def solution( target ):
  
  """
 
- #factors = set( target )
  pfactors = set()
 
+ while True:
+  print("finding factor of {}".format(target))
+  pfac = findminfactor( target )
+
+  print("factor is: {}".format(pfac))
+
+  print("list of pfactors: ")
+  pfactors.add(pfac)
+  print(pfactors)
+  
+  if pfac != target:
+   target = target/pfac
+  else:
+    break
  
- 
+  print(" \n\n")
+
+  
  
 
 def findminfactor( x ):
@@ -35,7 +50,7 @@ def findminfactor( x ):
   else:
     i = i+1  
 
- return -1
+ return x
 
 
 
