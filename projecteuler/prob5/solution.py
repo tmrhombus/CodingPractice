@@ -15,30 +15,37 @@ def solution( b, t ):
  
  """
 
+ doprint = True
+
  # Fill list of lists of primes
  primelists = []
  for i in range(b,t+1):
-  print("Writing primes for {}".format(i))
+  if(doprint):
+   print("Writing primes for {}".format(i))
   primelists.append( primefactors(i) )
 
- print("Original primelist")
- print(primelists)
+ if(doprint):
+  print("Original primelist")
+  print(primelists)
 
- print("")
+  print("")
  
  minintersect = []
 
  for i in range(len(primelists)):
-  print("Prime lists: {}".format(primelists))
-  print("Min instersect: {}".format(minintersect))
-  print(" Prime list i = {}:  {}".format(i,primelists[i])) 
+  if(doprint):
+   print("Prime lists: {}".format(primelists))
+   print("Min instersect: {}".format(minintersect))
+   print(" Prime list i = {}:  {}".format(i,primelists[i])) 
   for j in range(len(primelists[i])):
    p = primelists[i][j]
-   print("    {}".format(p))
+   if(doprint):
+    print("    {}".format(p))
    minintersect.append( p )
    for k in range(i,len(primelists)):
     if len(primelists[k])>0:
-     print(" {}".format(primelists[k][0]) )
+     if(doprint):
+      print(" {}".format(primelists[k][0]) )
      if (primelists[k][0] == p):
       primelists[k].pop(0)
      
@@ -46,8 +53,6 @@ def solution( b, t ):
  product = 1
  for m in minintersect:
   product = product*m
- 
-
 
  return minintersect, product
 
@@ -87,9 +92,4 @@ def findminfactor( x ):
     i = i+1  
 
  return x
-
-
-
-
-
 
