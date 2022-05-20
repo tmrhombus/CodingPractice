@@ -1,10 +1,11 @@
 import solution as sol
 
 
- 
-n=10 
+ns = [10,100]
 
-ans  = sol.solution( n )
+for n in ns: 
  
-print("\n\nThe difference between the square of the sum and the sum of squares in the range from 1 to {} is {}  \n\n".format(n, ans))
+ ans1, ans2  = sol.solution( n )
+  
+ print("\n\nThe difference between the square of the sum and the sum of squares in the range from 1 to {} is {} = {} \n\n".format(n, ans1, ans2))
   
