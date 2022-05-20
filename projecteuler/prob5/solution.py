@@ -15,7 +15,7 @@ def solution( b, t ):
  
  """
 
- doprint = True
+ doprint = False
 
  # Fill list of lists of primes
  primelists = []
