@@ -1,3 +1,4 @@
+import math 
 
 def solution( n ):
  """
@@ -22,9 +23,11 @@ def solution( n ):
  
  x=3
  while len(primes) < n:
- #for x in range(3, 100000) :
+  limit = int( math.sqrt(x) )
   isprime = True;
   for pm in primes :
+   if pm[0] > limit:
+    break
    while pm[1] < x : 
     pm[1] += pm[0]
    if pm[1] == x : 
