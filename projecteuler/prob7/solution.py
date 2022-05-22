@@ -32,6 +32,6 @@ def solution( n ):
     break
   if isprime :
    primes.append([x, x]);
-  x = x+1
+  x = x+2
  
  return primes
