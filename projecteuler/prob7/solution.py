@@ -6,21 +6,16 @@ def solution( n ):
 
  method:
 
- sieve of Eratosthenes  
+ Incremental Sieve of Eratosthenes  
 
- algorithm Sieve of Eratosthenes is
-     input: an integer n > 1.
-     output: all prime numbers from 2 through n.
- 
-     let A be an array of Boolean values, indexed by integers 2 to n,
-     initially all set to true.
-     
-     for i = 2, 3, 4, ..., not exceeding √n do
-         if A[i] is true
-             for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n do
-                 set A[j] := false
- 
-     return all i such that A[i] is true.
+ store list of primes and multiple of primes
+ loop over numbers [n]
+  loop over primes [p]
+   find first multiple of p that's larger than n
+   if a multiple of p equals n, go to next n
+  if you go through all primes and haven't found a multiple
+   add n to list of primes
+
  """
 
  doprint = True
