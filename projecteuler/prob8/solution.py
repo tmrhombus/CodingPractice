@@ -11,5 +11,24 @@ def solution( n, x ):
 
  """
 
+ # cast x to a string for easy indexing
+ strx = str(x) 
 
- return digits, prod
+ bestdig = []
+ bestprod = -1
+ for i in range( len(strx)-n+1 ):
+  digits = []
+  prod = 1
+  for j in range( n ):
+   digits.append(int(strx[i+j]))
+   prod = prod * int(strx[i+j])
+  
+  #print("------------")
+  #print(digits)
+  #print(prod)
+  #print(bestprod)
+  if prod > bestprod:
+   bestprod = prod
+   bestdig = digits
+
+ return bestdig, bestprod
