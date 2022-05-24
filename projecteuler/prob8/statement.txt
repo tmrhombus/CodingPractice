@@ -25,3 +25,7 @@ The four adjacent digits in the 1000-digit number that have the greatest product
 
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
+
+The 13 consecutive digits are:
+[5, 5, 7, 6, 6, 8, 9, 6, 6, 4, 8, 9, 5]
+They multiply to 23514624000 
