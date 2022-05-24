@@ -14,5 +14,9 @@ def solution( p ):
  for a in range( 1,p ):
   for b in range( 1,p-a ):
    print(" {} + {} = {}".format(a,b,a+b))
+   c = p - a - b
+   print(" a + b + c = {}".format(a+b+c))
+   print(" {} + {} + {} = {}".format(a,b,c,a+b+c))
+   print("--------------")
 
  return trips
