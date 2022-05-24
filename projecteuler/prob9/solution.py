@@ -10,7 +10,9 @@ def solution( p ):
   check if c=p-a-b completes the triplet
  """
 
- # cast x to a string for easy indexing
  trips = []
+ for a in range( p ):
+  for b in range( p-a ):
+   print(" {} + {} = {}".format(a,b,a+b))
 
  return trips
