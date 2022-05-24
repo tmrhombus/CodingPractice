@@ -19,6 +19,6 @@ def solution( p ):
    #print(" {} + {} + {} = {}".format(a,b,c,a+b+c))
    #print("--------------")
    if (a**2+b**2==c**2):
-    trips.append([a,b,c])
+    trips.append([a,b,c,a*b*c])
 
  return trips
