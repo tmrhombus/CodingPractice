@@ -11,8 +11,8 @@ def solution( p ):
  """
 
  trips = []
- for a in range( p ):
-  for b in range( p-a ):
+ for a in range( 1,p ):
+  for b in range( 1,p-a ):
    print(" {} + {} = {}".format(a,b,a+b))
 
  return trips
