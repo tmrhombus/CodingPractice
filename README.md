@@ -90,6 +90,10 @@ Source code for various algorithm implementations
   - determine if an integer is "happy" (number theory definition) 
     https://en.wikipedia.org/wiki/Happy_number
 
+## trees
+- binary tree, breadth first search, depth first search (pre/post/in order)  
+- binary search tree
+
  ## Project Euler
  Solutions to questions from https://projecteuler.net/
  1. Sum of multiples of 3 or 5 < 1k :: 233168
@@ -103,3 +107,7 @@ Source code for various algorithm implementations
  8. Given a 1000-digit number, find the group of 14 sequential numbers with largest product :: 23514624000
  9. There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc. :: 200 x 375 x 425 = 31875000
  10. Sum of all primes less than 2M :: 142913828922
+
+
+## leetcode
+Find all unique combinations of 4 numbers in an array which add to a given target
