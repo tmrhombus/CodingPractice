@@ -89,3 +89,17 @@ Source code for various algorithm implementations
   - find the intersection of two arrays
   - determine if an integer is "happy" (number theory definition) 
     https://en.wikipedia.org/wiki/Happy_number
+
+ ## Project Euler
+ Solutions to questions from https://projecteuler.net/
+ 1. Sum of multiples of 3 or 5 < 1k :: 233168
+ 2. Sum of even Fibinocci numbers < 4M :: 4613732
+ 3. Largest prime factor of 600851475143 :: 6857
+ 4. Largest palindrome made from the product of two 3-digit numbers: 913 x 993 = 906609
+ 5. Smallest positive number that is evenly divisible by all of the numbers from 1 to 20 :: 232792560
+  - It has a prime factorization of [1, 2, 3, 2, 5, 7, 2, 3, 11, 13, 2, 17, 19]
+ 6. Difference between the sum of the squares of the first one hundred natural numbers and the square of the sum :: 25164150
+ 7. The 10001st prime number :: 104743
+ 8. Given a 1000-digit number, find the group of 14 sequential numbers with largest product :: 23514624000
+ 9. There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc. :: 200 x 375 x 425 = 31875000
+ 10. Sum of all primes less than 2M :: 142913828922
