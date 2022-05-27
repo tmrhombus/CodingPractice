@@ -1,12 +1,12 @@
 import solution as sol
 
 # m = max value for primes
-p = 10
+p = 2000000
 
 primes,psum = sol.solution( p )
   
 print("\n\nThe sum of all primes less than {} is {}".format(p, psum))
 
-print("The primes themselves are:")
-for a in primes:
- print(" {}".format(a[0]))
+#print("The primes themselves are:")
+#for a in primes:
+# print(" {}".format(a[0]))
