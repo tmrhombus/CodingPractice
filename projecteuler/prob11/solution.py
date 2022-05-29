@@ -11,17 +11,17 @@ def solution( n, grid ):
  """
 
  maxprod = -1
- horlen = len(grid[0])
- verlen = len(grid)
- print(horlen)
- print(verlen)
+ hlen = len(grid[0])
+ vlen = len(grid)
 
-# for i in range(horlen):
-#  for j in range(verlen):
-#
-#   # check horisontally
-#   #if (i < 
-#   print(grid[i][j])
+ for j in range(vlen):
+  for i in range(hlen):
+
+   # check horisontally
+   if (i <= hlen - n):
+    #print(grid)
+    print(i)
+   #print(grid[i][j])
 
  index = [-1,-1]
  nums = [-1,-1,-1,5]
@@ -29,3 +29,9 @@ def solution( n, grid ):
  return index, nums
 
  
+
+def prod(i,j,di,dj,n,grid):
+ p = 1 
+ for k in range(n):
+  p *= grid[j+k*dj][i+k*di]
+ return p 

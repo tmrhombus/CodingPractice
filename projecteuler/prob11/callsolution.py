@@ -23,6 +23,16 @@ grid = [
 [ 1,70,54,71,83,51,54,69,16,92,33,48,61,43,52, 1,89,19,67,48]
 ]
 
+
+grid = [ 
+[1,2,3,4,5,6],
+[1,2,3,4,5,6],
+[1,2,3,4,5,6],
+[1,2,3,4,5,6],
+[1,2,3,4,5,6],
+[1,2,3,4,5,6]
+]
+
 # n = number of entries in a row to multiply
 n = 4
 
@@ -36,6 +46,16 @@ for num in nums:
  print(num)
 
 
-#print("The primes themselves are:")
-#for a in primes:
-# print(" {}".format(a[0]))
+
+
+print("\n\n")
+print( sol.prod( 0,0,1,0,n,grid  ) )
+
+print("\n\n")
+print( sol.prod( 0,0,1,1,n,grid  ) )
+
+print("\n\n")
+print( sol.prod( 0,0,0,1,n,grid  ) )
+
+print("\n\n")
+print( sol.prod( 4,4,-1,-1,n,grid  ) )
