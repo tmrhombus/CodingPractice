@@ -17,19 +17,36 @@ def solution( n, grid ):
  for i in range(hlen):
   for j in range(vlen):
 
-   # check horisontally
+   print(" ({},{})={}".format(i,j,grid[i][j]))
+
+   # check horizontally
    if (i <= hlen - n):
+    print("  h: {}".format(prod(i,j,1,0,n,grid)))
     p,tempnum = prod(i,j,1,0,n,grid)
     if (p>maxprod):
      maxprod = p
      index=[i,j]
      nums=tempnum
      nums.append(maxprod)
-    print(" ({},{})={}".format(i,j,grid[i][j]))
-    print("  {}".format(prod(i,j,1,0,n,grid)))
-    #print(grid)
-    #print(i)
-   #print(grid[i][j])
+   # check vertically
+   if (j <= vlen - n):
+    print("  v: {}".format(prod(i,j,0,1,n,grid)))
+    p,tempnum = prod(i,j,0,1,n,grid)
+    if (p>maxprod):
+     maxprod = p
+     index=[i,j]
+     nums=tempnum
+     nums.append(maxprod)
+   # check diag up
+   if (i <= hlen-n and j <= vlen - n):
+    print("  du: {}".format(prod(i,j,1,1,n,grid)))
+    p,tempnum = prod(i,j,1,1,n,grid)
+    if (p>maxprod):
+     maxprod = p
+     index=[i,j]
+     nums=tempnum
+     nums.append(maxprod)
+
   print("\n")
 
 
