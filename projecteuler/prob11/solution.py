@@ -10,9 +10,18 @@ def solution( n, grid ):
  at grid point (i,j) only check right,down,downward diagonals
  """
 
- for i in range(len(grid[0])):
-  for j in range(len(grid[0])):
-   print(grid[i][j])
+ maxprod = -1
+ horlen = len(grid[0])
+ verlen = len(grid)
+ print(horlen)
+ print(verlen)
+
+# for i in range(horlen):
+#  for j in range(verlen):
+#
+#   # check horisontally
+#   #if (i < 
+#   print(grid[i][j])
 
  index = [-1,-1]
  nums = [-1,-1,-1,5]
