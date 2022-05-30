@@ -14,14 +14,18 @@ def solution( n, grid ):
  hlen = len(grid)
  vlen = len(grid[0])
 
+ doprint = False
+
  for i in range(hlen):
   for j in range(vlen):
 
-   print(" ({},{})={}".format(i,j,grid[i][j]))
+   if(doprint):
+    print(" ({},{})={}".format(i,j,grid[i][j]))
 
    # check horizontally
    if (i <= hlen - n):
-    print("  h: {}".format(prod(i,j,1,0,n,grid)))
+    if(doprint):
+     print("  h: {}".format(prod(i,j,1,0,n,grid)))
     p,tempnum = prod(i,j,1,0,n,grid)
     if (p>maxprod):
      maxprod = p
@@ -31,7 +35,8 @@ def solution( n, grid ):
      index.append("horizontal")
    # check vertically
    if (j <= vlen - n):
-    print("  v: {}".format(prod(i,j,0,1,n,grid)))
+    if(doprint):
+     print("  v: {}".format(prod(i,j,0,1,n,grid)))
     p,tempnum = prod(i,j,0,1,n,grid)
     if (p>maxprod):
      maxprod = p
@@ -41,7 +46,8 @@ def solution( n, grid ):
      index.append("vertical")
    # check diag up
    if (i <= hlen-n and j <= vlen - n):
-    print("  du: {}".format(prod(i,j,1,1,n,grid)))
+    if(doprint):
+     print("  du: {}".format(prod(i,j,1,1,n,grid)))
     p,tempnum = prod(i,j,1,1,n,grid)
     if (p>maxprod):
      maxprod = p
@@ -51,7 +57,8 @@ def solution( n, grid ):
      index.append("diagonal up")
    # check diag down
    if (i >= n and j <= vlen - n): 
-    print("  dd: {}".format(prod(i,j,-1,1,n,grid)))
+    if(doprint):
+     print("  dd: {}".format(prod(i,j,-1,1,n,grid)))
     p,tempnum = prod(i,j,-1,1,n,grid)
     if (p>maxprod):
      maxprod = p 
@@ -60,7 +67,8 @@ def solution( n, grid ):
      nums.append(maxprod)
      index.append("diagonal down")
 
-  print("\n")
+  if(doprint):
+   print("\n")
 
 
  return index, nums
