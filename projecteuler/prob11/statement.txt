@@ -27,3 +27,13 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 
 
 
+
+
+
+The max product of 4 entries in the grid is 70600674
+
+ The numbers start at position (15,3) and are diagonal down:
+87
+97
+94
+89
