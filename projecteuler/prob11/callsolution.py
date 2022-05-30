@@ -24,14 +24,14 @@ grid = [
 ]
 
 
-grid = [ 
-[1,2,3,4,5,6],
-[1,2,3,4,5,6],
-[1,2,3,4,5,6],
-[1,2,3,4,5,6],
-[1,2,3,4,5,6],
-[1,2,3,4,5,6]
-]
+#grid = [ 
+#[1,1,1,1,1,1],
+#[1,2,1,1,3,1],
+#[1,1,2,3,1,1],
+#[1,1,3,2,1,1],
+#[1,3,1,1,2,1],
+#[1,1,1,1,1,1]
+#]
 
 # n = number of entries in a row to multiply
 n = 4
@@ -40,22 +40,22 @@ index,nums = sol.solution( n, grid )
   
 print("\n\nThe max product of {} entries in the grid is {}".format(n,nums[-1]))
 
-print("\n The numbers start at position ({},{}) and are:".format(index[0],index[1]))
+print("\n The numbers start at position ({},{}) and are {}:".format(index[0],index[1],index[2]))
 
-for num in nums:
- print(num)
-
-
+for i in range(len(nums)-1):
+ print(nums[i])
 
 
-print("\n\n")
-print( sol.prod( 0,0,1,0,n,grid  ) )
 
-print("\n\n")
-print( sol.prod( 0,0,1,1,n,grid  ) )
 
-print("\n\n")
-print( sol.prod( 0,0,0,1,n,grid  ) )
-
-print("\n\n")
-print( sol.prod( 4,4,-1,-1,n,grid  ) )
+#print("\n\n")
+#print( sol.prod( 0,0,1,0,n,grid  ) )
+#
+#print("\n\n")
+#print( sol.prod( 0,0,1,1,n,grid  ) )
+#
+#print("\n\n")
+#print( sol.prod( 0,0,0,1,n,grid  ) )
+#
+#print("\n\n")
+#print( sol.prod( 4,4,-1,-1,n,grid  ) )
