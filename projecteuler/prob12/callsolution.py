@@ -1,7 +1,7 @@
 import solution as sol
 
 # nd = minimum number of divisors solution must have
-ndivreq = 4
+ndivreq = 500
 
 lastdigit,solnum,primefactors,ndiv   = sol.solution( ndivreq )
   
