@@ -8,7 +8,7 @@ def solution( maxn ):
 
  maxchain = []
 
- doprint=True
+ doprint=False
 
  for i in range(1,maxn):
 
@@ -39,9 +39,11 @@ def makechain(x,doprint):
    return thechain
 
   if x%2 == 0:
-   x = x/2
+   x = int(x/2)
 
   else:
-   x = 3*x+1
+   x = int(3*x+1)
+
+  thechain.append(x)
 
  
