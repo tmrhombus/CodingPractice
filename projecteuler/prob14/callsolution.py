@@ -1,6 +1,6 @@
 import solution as sol
 
-maxn = 15
+maxn = 1000000
 
 maxchain = sol.solution( maxn )
 
