@@ -18,8 +18,10 @@ def solution( vsteps, hsteps ):
  return nroutes
 
 def binomial(n,k):
+
+ tot = factorial(n) / ( factorial(k) * factorial(n-k) )
  
- return 1
+ return tot
 
 
 def factorial(x):
