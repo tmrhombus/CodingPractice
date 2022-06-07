@@ -12,7 +12,7 @@ def solution( vsteps, hsteps ):
  """
 
  
- nroutes = 1
+ nroutes = binomial( vsteps+hsteps, vsteps  )
 
 
  return nroutes
