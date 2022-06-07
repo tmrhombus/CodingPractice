@@ -11,6 +11,20 @@ def solution( vsteps, hsteps ):
  such combinations.
  """
 
+ 
+ nroutes = 1
 
 
  return nroutes
+
+def binomial(n,k):
+ 
+ return 1
+
+
+def factorial(x):
+ tot = 1
+ for i in range(2,x+1):
+  tot *= i
+
+ return tot
