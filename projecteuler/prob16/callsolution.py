@@ -1,7 +1,7 @@
 import solution as sol
 
 base = 2
-exp  = 15
+exp  = 1000
 
 prod,thesum = sol.solution( base, exp )
 
