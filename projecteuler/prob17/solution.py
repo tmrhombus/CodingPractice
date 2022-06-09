@@ -34,8 +34,8 @@ def solution( top ):
            7,         9,           8,          8]
 
 
- w_tens = ["twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"]
- n_tens = [ 6,        6,        6,        5,       5,       7,         6,        6] 
+ w_tens = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+ n_tens = [ 6,        6,        5,       5,       5,       7,         6,        6] 
 
  for i in range(1,top+1):
 
@@ -47,7 +47,7 @@ def solution( top ):
   tens = (i % 100) // 10
   ones = (i % 10)
 
-  print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,ones)), 
+  #print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,ones)), 
 
   if(thous):
    #word = word + w_ones[thous-1] + " thousand"
@@ -82,17 +82,11 @@ def solution( top ):
    num  = num  +       n_lows[10*tens+ones-1]
 
 
-
-  # # i from 1 - 10
-  # if(0<i<10):
-  print(" {}".format(word))
-  print(" {}".format(num))
-   
- 
-
-
-  #print(" {}: {}: {}".format( i, word, num)) 
-
+  tot = tot + num
+  print(" {}: {}   {}".format( i, word, num ) )
+  #print(" {}".format(word))
+  #print("  {}".format(num))
+  #print("  {}".format(tot))
   
  return tot
 
