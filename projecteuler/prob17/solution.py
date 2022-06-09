@@ -27,16 +27,27 @@ def solution( top ):
   word = ""
   num = 0
 
-
   thous = i // 1000
   hunds = (i % 1000) // 100
   tens = (i % 100) // 10
   units = (i % 10)
-  
 
   print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,units)), 
+
+  if(thous):
+   word = word + w_ones[thous-1] + " thousand"
+   num  = num  + n_ones[thous-1] + 8
+
+  if(hunds):
+   word = word + " " + w_ones[hunds-1] + " hundred"
+   num  = num  +       n_ones[hunds-1] + 7
+
+  
+
   # # i from 1 - 10
   # if(0<i<10):
+  print(" {}".format(word))
+  print(" {}".format(num))
    
  
 
