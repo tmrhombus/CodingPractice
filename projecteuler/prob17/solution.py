@@ -18,7 +18,7 @@ def solution( top ):
  dobrit = True
  
  w_ones = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
- n_ones = [3,   3,   5,     4,    4,    3,   5,     5,     4  ]
+ n_ones = [3,      3,    5,       4,      4,      3,     5,       5,       4  ]
 
  w_teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", \
             "sixteen", "seventeen", "eighteen", "nineteen"]
@@ -29,7 +29,7 @@ def solution( top ):
  w_lows = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", \
            "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", \
            "sixteen", "seventeen", "eighteen", "nineteen"]
- n_lows = [3,   3,   5,     4,    4,    3,   5,     5,     4  ]
+ n_lows = [3,      3,    5,       4,      4,      3,     5,       5,       4, \
            3,     6,        6,        8,          8,          7, \
            7,         9,           8,          8]
 
@@ -50,26 +50,38 @@ def solution( top ):
   print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,ones)), 
 
   if(thous):
-   word = word + w_ones[thous-1] + " thousand"
-   num  = num  + n_ones[thous-1] + 8
+   #word = word + w_ones[thous-1] + " thousand"
+   #num  = num  + n_ones[thous-1] + 8
+   word = word + w_lows[thous-1] + " thousand"
+   num  = num  + n_lows[thous-1] + 8
 
   if(hunds):
-   word = word + " " + w_ones[hunds-1] + " hundred"
-   num  = num  +       n_ones[hunds-1] + 7
+   #word = word + " " + w_ones[hunds-1] + " hundred"
+   #num  = num  +       n_ones[hunds-1] + 7
+   word = word + " " + w_lows[hunds-1] + " hundred"
+   num  = num  +       n_lows[hunds-1] + 7
 
    if(dobrit and (tens or ones)):
     word = word + " and"
     num  = num  + 3
 
-  if(tens):
-   if(tens > 1):
-    word = word + " " + w_tens[tens-2]
-    num  = num  +       n_tens[tens-2]
-   
-    if(ones):
-     word = word + " " + w_ones[ones-1]
-     num  = num  +       n_ones[ones-1]
+  if(tens > 1):
+   word = word + " " + w_tens[tens-2]
+   num  = num  +       n_tens[tens-2]
   
+   if(ones):
+    #word = word + " " + w_ones[ones-1]
+    #num  = num  +       n_ones[ones-1]
+    word = word + " " + w_lows[ones-1]
+    num  = num  +       n_lows[ones-1]
+  
+  elif(tens or ones):
+   #word = word + " " + w_ones[ones-1]
+   #num  = num  +       n_ones[ones-1]
+   word = word + " " + w_lows[10*tens+ones-1]
+   num  = num  +       n_lows[10*tens+ones-1]
+
+
 
   # # i from 1 - 10
   # if(0<i<10):
