@@ -15,6 +15,7 @@ def solution( top ):
 
  tot = 0
 
+ # weird Brittish convention to insert "and" 
  dobrit = True
  
  w_ones = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
