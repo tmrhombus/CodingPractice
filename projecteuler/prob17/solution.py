@@ -23,7 +23,25 @@ def solution( top ):
  n_tens = [ 6,        6,        6,        5,       5,       7,         6,        6] 
 
  for i in range(1,top+1):
-  print(i) 
+
+  word = ""
+  num = 0
+
+
+  thous = i // 1000
+  hunds = (i % 1000) // 100
+  tens = (i % 100) // 10
+  units = (i % 10)
+  
+
+  print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,units)), 
+  # # i from 1 - 10
+  # if(0<i<10):
+   
+ 
+
+
+  #print(" {}: {}: {}".format( i, word, num)) 
 
   
  return tot
