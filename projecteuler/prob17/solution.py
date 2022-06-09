@@ -9,7 +9,13 @@ def solution( top ):
  keep track of charactar count in parallel
  """
 
+ if(top > 9999):
+  print("Choose a top number below 10,000")
+  return(-1)
+
  tot = 0
+
+ dobrit = True
  
  w_ones = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
  n_ones = [3,   3,   5,     4,    4,    3,   5,     5,     4  ]
@@ -18,6 +24,15 @@ def solution( top ):
             "sixteen", "seventeen", "eighteen", "nineteen"]
  n_teens = [ 3,     6,        6,        8,          8,          7, \
              7,         9,           8,          8]
+
+
+ w_lows = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", \
+           "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", \
+           "sixteen", "seventeen", "eighteen", "nineteen"]
+ n_lows = [3,   3,   5,     4,    4,    3,   5,     5,     4  ]
+           3,     6,        6,        8,          8,          7, \
+           7,         9,           8,          8]
+
 
  w_tens = ["twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"]
  n_tens = [ 6,        6,        6,        5,       5,       7,         6,        6] 
@@ -30,9 +45,9 @@ def solution( top ):
   thous = i // 1000
   hunds = (i % 1000) // 100
   tens = (i % 100) // 10
-  units = (i % 10)
+  ones = (i % 10)
 
-  print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,units)), 
+  print(" {} :  {}  {}  {}  {}   ".format(i,thous,hunds,tens,ones)), 
 
   if(thous):
    word = word + w_ones[thous-1] + " thousand"
@@ -42,6 +57,18 @@ def solution( top ):
    word = word + " " + w_ones[hunds-1] + " hundred"
    num  = num  +       n_ones[hunds-1] + 7
 
+   if(dobrit and (tens or ones)):
+    word = word + " and"
+    num  = num  + 3
+
+  if(tens):
+   if(tens > 1):
+    word = word + " " + w_tens[tens-2]
+    num  = num  +       n_tens[tens-2]
+   
+    if(ones):
+     word = word + " " + w_ones[ones-1]
+     num  = num  +       n_ones[ones-1]
   
 
   # # i from 1 - 10
