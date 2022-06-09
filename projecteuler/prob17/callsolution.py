@@ -1,6 +1,6 @@
 import solution as sol
 
-top  = 10
+top  = 1000
 
 tot = sol.solution( top )
 
