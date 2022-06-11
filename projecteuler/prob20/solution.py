@@ -8,8 +8,8 @@ def solution( topnum ):
  then sum the digits
  """
 
- prod = -1
- sumdig = -1
+ prod = factorial( topnum )
+ sumdig = sumdigits( prod )
 
  return prod, sumdig
 
@@ -20,3 +20,10 @@ def factorial( n ):
   prod = prod*i
 
  return prod
+
+def sumdigits(n):
+ s = 0 
+ while n:
+  s += n % 10
+  n //= 10
+ return s
