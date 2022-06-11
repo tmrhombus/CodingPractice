@@ -16,7 +16,7 @@ def solution( triangle ):
    tba = max( triangle[i+1][j], triangle[i+1][j+1] )
    triangle[i][j] += tba
 
- print(triangle)
+ #print(triangle)
  thesum = triangle[0][0]
 
  return thesum
