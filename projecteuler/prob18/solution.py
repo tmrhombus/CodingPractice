@@ -10,5 +10,13 @@ def solution( triangle ):
  """
 
 
+ for i in reversed( range( len( triangle )-1 ) ):
+  for j in range(len(triangle[i])):
+
+   tba = max( triangle[i+1][j], triangle[i+1][j+1] )
+   triangle[i][j] += tba
+
+ print(triangle)
+ thesum = triangle[0][0]
 
  return thesum
