@@ -6,9 +6,22 @@ def solution( topnum ):
 
  """
 
- for i in range(2,topnum+1):
-  pfacs = pfactorize(i)
-  print(" i={}, facs={}".format(i,pfacs))
+ i=60
+# for i in range(2,topnum+1):
+#  pfacs = pfactorize(i)
+#  print(" i={}, facs={}".format(i,pfacs))
+
+ pfacs = pfactorize(i)
+ print(" i={}, facs={}".format(i,pfacs))
+ 
+ prelist = []
+ for j in pfacs:
+  for k in range(1,pfacs[j]+1):
+
+   fac = pfacs[j]**k
+   print("   k={} ,  {}".format( k, fac ))
+
+
 
 
  ans = []
