@@ -14,7 +14,7 @@ def solution( topnum ):
  pfacs = pfactorize(i)
  print(" i={}, facs={}".format(i,pfacs))
  
- prelist = [1]
+ prelist = []
  for j in pfacs:
   #print("  j: {}".format(j))
   for k in range(1,pfacs.get(j)+1):
@@ -28,7 +28,14 @@ def solution( topnum ):
  thecombs = combos(prelist)
  print("thecombs = {}".format(thecombs))
 
+ faclist = []
+ for j in thecombs:
+  prod = 1
+  for k in j:
+   prod *= k
+  faclist.append(prod)
 
+ print(faclist)
 
  ans = []
 
