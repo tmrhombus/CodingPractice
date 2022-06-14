@@ -16,14 +16,15 @@ def solution( topnum ):
  
  prelist = [1]
  for j in pfacs:
-  print("  j: {}".format(j))
+  #print("  j: {}".format(j))
   for k in range(1,pfacs.get(j)+1):
-
-   fac = j**k
-   print("   k={}, pfacs[{}]={},  fac={}".format( k, j, pfacs[j], fac ))
+   #fac = j**k
+   #print("   k={}, pfacs[{}]={},  fac={}".format( k, j, pfacs[j], fac ))
    prelist.append(j**k)
 
  print("prelist = {}".format(prelist))
+
+ 
 
 
 
@@ -106,5 +107,13 @@ def findminfactor( x ):
  return int(x)
 
 
-
-
+def combos(a):
+ """
+ all return all combinations of elements in list a
+ """
+ if len(a) == 0:
+  return [[]]
+ cs = []
+ for c in combs(a[1:]):
+  cs += [c, c+[a[0]]]
+ return cs
