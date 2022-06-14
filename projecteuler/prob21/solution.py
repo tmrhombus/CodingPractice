@@ -16,10 +16,11 @@ def solution( topnum ):
  
  prelist = []
  for j in pfacs:
-  for k in range(1,pfacs[j]+1):
+  print("  j: {}".format(j))
+  for k in range(1,pfacs.get(j)+1):
 
-   fac = pfacs[j]**k
-   print("   k={} ,  {}".format( k, fac ))
+   fac = j**k
+   print("   k={}, pfacs[{}]={},  fac={}".format( k, j, pfacs[j], fac ))
 
 
 
