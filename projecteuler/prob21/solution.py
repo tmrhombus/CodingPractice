@@ -6,6 +6,11 @@ def solution( topnum ):
 
  """
 
+ for i in range(2,topnum+1):
+  pfacs = pfactorize(i)
+  print(" i={}, facs={}".format(i,pfacs))
+
+
  ans = []
 
  thesum = 0
@@ -19,19 +24,15 @@ def solution( topnum ):
 
 def pfactorize( target ):
  """
- returns all prime factors of target
- in a hashset
+ returns all prime factors of target in a hashset
 
  method:
-
  find A = lowest prime factor of target by checking 2,3,4,...
  split target into t = A*B 
   A is prime, add it to list of primes
   B becomes new target
    repeat iteraticely
-
   if we can not find any factors for target, we're done
- 
  """
 
  doprint = False
