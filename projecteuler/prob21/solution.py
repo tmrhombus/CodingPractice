@@ -14,14 +14,16 @@ def solution( topnum ):
  pfacs = pfactorize(i)
  print(" i={}, facs={}".format(i,pfacs))
  
- prelist = []
+ prelist = [1]
  for j in pfacs:
   print("  j: {}".format(j))
   for k in range(1,pfacs.get(j)+1):
 
    fac = j**k
    print("   k={}, pfacs[{}]={},  fac={}".format( k, j, pfacs[j], fac ))
+   prelist.append(j**k)
 
+ print("prelist = {}".format(prelist))
 
 
 
