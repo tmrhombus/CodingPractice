@@ -25,6 +25,8 @@ def solution( topnum ):
  print("prelist = {}".format(prelist))
 
  
+ thecombs = combos(prelist)
+ print("thecombs = {}".format(thecombs))
 
 
 
@@ -114,6 +116,6 @@ def combos(a):
  if len(a) == 0:
   return [[]]
  cs = []
- for c in combs(a[1:]):
+ for c in combos(a[1:]):
   cs += [c, c+[a[0]]]
  return cs
