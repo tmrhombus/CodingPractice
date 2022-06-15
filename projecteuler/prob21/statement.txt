@@ -10,5 +10,9 @@ Evaluate the sum of all the amicable numbers under 10000.
 
 
 
+The amicable numbers from 1 to 10000 are
+[[220, 284], [284, 220], [1184, 1210], [1210, 1184], [2620, 2924], [2924, 2620], [5020, 5564], [5564, 5020], [6232, 6368], [6368, 6232]]
+They sum to 31626
+
 
 
