@@ -26,9 +26,14 @@ def solution(topnum):
    divisorsum[j] += i
 
  
- abundants = {}
+ abundants = []
  for i,j in enumerate(divisorsum):
-  print("i = {},  j = {}".format(i,j))
+  if ( i < j):
+   print("abundant i = {},  j = {}".format(i,j))
+   abundants.append(i)
+
+ print(abundants)
+  
  
 
 
