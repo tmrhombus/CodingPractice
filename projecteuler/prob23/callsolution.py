@@ -1,8 +1,8 @@
 
 import solution as sol
 
-themax = 100
+topnum = 100
 
-thesum = sol.solution()
+thesum = sol.solution(topnum)
 
-print("The sum of all integers under {} which can not be written as the sum of two abundant numbers is {}".format(themax, thesum))
+print("The sum of all integers under {} which can not be written as the sum of two abundant numbers is {}".format(topnum, thesum))
