@@ -38,12 +38,15 @@ def solution(topnum):
  for num,sumdiv in enumerate(divisorsum):
   # abundance definition
   if ( num < sumdiv):
-   print("abundant i = {},  j = {}".format(num,sumdiv))
+   #print("abundant i = {},  j = {}".format(num,sumdiv))
    abundants.append(num)
 
- print(abundants)
+ #print(abundants)
 
 
+ # make list of bools length topnum,
+ # iniitlize as False, set element
+ # i+j to true, for all pairs i,j in abundants
  isasum = [False]*topnum
  # loop through pairs of abundants
  for i in abundants:
@@ -52,11 +55,20 @@ def solution(topnum):
    if i+j<topnum:
     isasum[i+j]=True
   
- print(isasum)
+ #print(isasum)
 
+ # 
+ nonexpressable = []
+ for i in range(len(isasum)):
+  print("i={}:  {}".format(i,isasum[i]))
+  if not (isasum[i]):
+   nonexpressable.append(i)
 
+ #print(nonexpressable) 
 
  thesum = 0
+ for ne in nonexpressable:
+  thesum += ne
 
- return thesum
+ return thesum,nonexpressable
 
