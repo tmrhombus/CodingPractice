@@ -37,7 +37,7 @@ def solution(topnum):
  # j = value (sum of divisors for number i)
  for num,sumdiv in enumerate(divisorsum):
   # abundance definition
-  if ( num < sumdiv):
+  if (num < sumdiv):
    #print("abundant i = {},  j = {}".format(num,sumdiv))
    abundants.append(num)
 
@@ -70,5 +70,5 @@ def solution(topnum):
  for ne in nonexpressable:
   thesum += ne
 
- return thesum,nonexpressable
+ return thesum,abundants,nonexpressable
 
