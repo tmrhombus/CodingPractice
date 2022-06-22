@@ -8,6 +8,8 @@ def solution(topnum):
  method:
  1. make an array of the sum of divisors as in prob21
     divisorsum[j] corresponds to sum of divisors of j
+ 2. select from this an array of abundant numbers:
+    if divisorsum[j] > j, j is abundant
  """
  
  # Compute sum of proper divisors for each number
@@ -23,7 +25,11 @@ def solution(topnum):
    # add i to the divisor sum at index j
    divisorsum[j] += i
 
-
+ 
+ abundants = {}
+ for i,j in enumerate(divisorsum):
+  print("i = {},  j = {}".format(i,j))
+ 
 
 
 
