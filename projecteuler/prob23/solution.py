@@ -43,9 +43,16 @@ def solution(topnum):
 
  print(abundants)
 
- # 
+
+ isasum = [False]*topnum
+ # loop through pairs of abundants
+ for i in abundants:
+  for j in abundants:
+
+   if i+j<topnum:
+    isasum[i+j]=True
   
- 
+ print(isasum)
 
 
 
