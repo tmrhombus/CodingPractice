@@ -60,7 +60,7 @@ def solution(topnum):
  # 
  nonexpressable = []
  for i in range(len(isasum)):
-  print("i={}:  {}".format(i,isasum[i]))
+  #print("i={}:  {}".format(i,isasum[i]))
   if not (isasum[i]):
    nonexpressable.append(i)
 
