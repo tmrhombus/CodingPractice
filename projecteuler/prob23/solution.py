@@ -10,9 +10,14 @@ def solution(topnum):
     divisorsum[j] corresponds to sum of divisors of j
  2. select from this an array of abundant numbers:
     if divisorsum[j] > j, j is abundant
+ 3. loop through all combinations of abundants and 
+    see what they add up to. 
+ 4. make list of bools, length <topnum>
+ 5. loop through pairs i,j of abundant numbers, set
+    element i+j to true because it's a sum
  """
  
- # Compute sum of proper divisors for each number
+ # compute sum of proper divisors for each number
  # make array of zeros of length <topnum>
  divisorsum = [0] * topnum
  # loop through i = 1 to <topnum>
@@ -26,16 +31,19 @@ def solution(topnum):
    divisorsum[j] += i
 
  
+ # compute list of abundant numbers from divisorsum
  abundants = []
  # i = index (number)
  # j = value (sum of divisors for number i)
- for i,j in enumerate(divisorsum):
+ for num,sumdiv in enumerate(divisorsum):
   # abundance definition
-  if ( i < j):
-   print("abundant i = {},  j = {}".format(i,j))
-   abundants.append(i)
+  if ( num < sumdiv):
+   print("abundant i = {},  j = {}".format(num,sumdiv))
+   abundants.append(num)
 
  print(abundants)
+
+ # 
   
  
 
