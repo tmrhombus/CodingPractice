@@ -27,7 +27,10 @@ def solution(topnum):
 
  
  abundants = []
+ # i = index (number)
+ # j = value (sum of divisors for number i)
  for i,j in enumerate(divisorsum):
+  # abundance definition
   if ( i < j):
    print("abundant i = {},  j = {}".format(i,j))
    abundants.append(i)
