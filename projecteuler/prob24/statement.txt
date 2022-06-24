@@ -9,4 +9,4 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 
 
 
 
-
+The lexocographic permutation number 1000000 is 2783915460
