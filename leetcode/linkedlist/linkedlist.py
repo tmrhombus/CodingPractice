@@ -24,8 +24,14 @@ class MyLinkedList:
 #     
 #
  def addAtHead(self, val: int) -> None:
+  # allocate node, add data
   new_node = Node(val)
      
+  # make new node point to old head
+  new_node.next = self.head
+
+  # move head to point to new node
+  self.head = new_node
 
 # def addAtTail(self, val: int) -> None:
 #     
@@ -44,14 +50,18 @@ if __name__=='__main__':
     # Start with the empty list
     llist = MyLinkedList()
  
-    llist.head = Node(1)
-    second = Node(2)
-    third = Node(3)
- 
-    llist.head.next = second; # Link first node with second
-    second.next = third; # Link second node with the third node
- 
+    llist.addAtHead(3)
+    llist.addAtHead(4)
     llist.printList()
+
+#    llist.head = Node(1)
+#    second = Node(2)
+#    third = Node(3)
+# 
+#    llist.head.next = second; # Link first node with second
+#    second.next = third; # Link second node with the third node
+# 
+#    llist.printList()
 
 
 
