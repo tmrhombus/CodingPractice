@@ -82,63 +82,49 @@ class MyLinkedList:
   newnode = Node(val)
   newnode.next = prevnode.next
   prevnode.next = newnode
-  #print("index: {}, val: {}".format(index,prevnode.data))
+  self.count += 1
   
-     
+ def deleteAtIndex(self, index: int) -> None:
+  if(index>self.count):
+   return
 
-# def deleteAtIndex(self, index: int) -> None:
-        
-# def get(self, index: int) -> int:
-#  if(index>self.count):
-#   return None
-#  curnode = self.head
-#  for i in range(index):
-#   curnode = curnode.next
-#   #print("current node: {}".format(curnode.data))
-#  return(curnode.data)
+  prevnode = self.head
+  for i in range(index-1):
+   prevnode = prevnode.next
 
+  delnode = prevnode.next
+  nextnode = delnode.next
 
- 
+  prevnode.next = nextnode
+  self.count -= 1
+
 # Code execution starts here
 if __name__=='__main__':
  
-    # Start with the empty list
-    llist = MyLinkedList()
+ # Start with the empty list
+ llist = MyLinkedList()
  
-    llist.addAtHead(5)
-    llist.addAtHead(4)
-    llist.addAtHead(3)
-    llist.addAtHead(2)
-    llist.addAtHead(1)
+ llist.addAtHead(5)
+ llist.addAtHead(4)
+ llist.addAtHead(3)
+ llist.addAtHead(2)
+ llist.addAtHead(1)
 
-    for i in range(5):
-     print("i={}, data={}".format(i,llist.get(i)))
+ for i in range(llist.count):
+  print("i={}, data={}".format(i,llist.get(i)))
 
-    llist.addAtIndex(2,9)
+ llist.addAtIndex(2,9)
 
-    print("-----------")
-    for i in range(5):
-     print("i={}, data={}".format(i,llist.get(i)))
+ print("-----------")
+ for i in range(llist.count):
+  print("i={}, data={}".format(i,llist.get(i)))
 
-    llist.printList()
+ llist.deleteAtIndex(4)
+ 
+ print("-----------")
+ for i in range(llist.count):
+  print("i={}, data={}".format(i,llist.get(i)))
 
-#    llist.head = Node(1)
-#    second = Node(2)
-#    third = Node(3)
-# 
-#    llist.head.next = second; # Link first node with second
-#    second.next = third; # Link second node with the third node
-# 
-#    llist.printList()
-
-
-
-# Your MyLinkedList object will be instantiated and called as such:
-# obj = MyLinkedList()
-# param_1 = obj.get(index)
-# obj.addAtHead(val)
-# obj.addAtTail(val)
-# obj.addAtIndex(index,val)
-# obj.deleteAtIndex(index)
-
+ print("-----------")
+ llist.printList()
 
