@@ -33,9 +33,29 @@ class MyLinkedList:
   # move head to point to new node
   self.head = new_node
 
-# def addAtTail(self, val: int) -> None:
-#     
-#
+ def addAtTail(self, val: int) -> None:
+  
+  # allocate node, add data
+  new_node = Node(val)
+
+  # if linked list is empty,
+  # this is now the head
+  if self.head is None:
+   self.head = new_node
+   return
+
+  # if list is not empty,
+  # traverse until the end
+  else:
+   # start at head
+   last = self.head
+   # keep going until nothing next
+   while(last.next):
+    last = last.next
+
+   last.next = new_node
+     
+
 # def addAtIndex(self, index: int, val: int) -> None:
 #     
 #
@@ -52,6 +72,10 @@ if __name__=='__main__':
  
     llist.addAtHead(3)
     llist.addAtHead(4)
+
+    llist.addAtTail(1)
+    llist.addAtTail(7)
+
     llist.printList()
 
 #    llist.head = Node(1)
