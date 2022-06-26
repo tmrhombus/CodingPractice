@@ -1,5 +1,4 @@
 
-
 # Node class
 class Node:
   
@@ -7,7 +6,7 @@ class Node:
  def __init__(self, data):
   self.data = data  # Assign data
   self.next = None  # Initialize
-                       # next as null
+                    # next as null
   
 class MyLinkedList:
 
@@ -26,13 +25,15 @@ class MyLinkedList:
   if(index>self.count):
    return None
   curnode = self.head
-  for i in range(index):
-   curnode = curnode.next
-   #print("current node: {}".format(curnode.data))
-  return(curnode.data)
+  if(index==0):
+   return curnode.data
+  else:
+   for i in range(index):
+    curnode = curnode.next
+    #print("current node: {}".format(curnode.data))
+   return(curnode.data)
   
      
-
  def addAtHead(self, val: int) -> None:
   # allocate node, add data
   new_node = Node(val)
@@ -92,10 +93,14 @@ class MyLinkedList:
   for i in range(index-1):
    prevnode = prevnode.next
 
-  delnode = prevnode.next
-  nextnode = delnode.next
+  if(index==0):
+   self.head = prevnode.next
+   
+  else:
+   delnode = prevnode.next
+   nextnode = delnode.next
 
-  prevnode.next = nextnode
+   prevnode.next = nextnode
   self.count -= 1
 
 # Code execution starts here
@@ -105,21 +110,21 @@ if __name__=='__main__':
  llist = MyLinkedList()
  
  llist.addAtHead(5)
- llist.addAtHead(4)
- llist.addAtHead(3)
- llist.addAtHead(2)
- llist.addAtHead(1)
+# llist.addAtHead(4)
+# llist.addAtHead(3)
+# llist.addAtHead(2)
+# llist.addAtHead(1)
+#
+# for i in range(llist.count):
+#  print("i={}, data={}".format(i,llist.get(i)))
+#
+# llist.addAtIndex(2,9)
+#
+# print("-----------")
+# for i in range(llist.count):
+#  print("i={}, data={}".format(i,llist.get(i)))
 
- for i in range(llist.count):
-  print("i={}, data={}".format(i,llist.get(i)))
-
- llist.addAtIndex(2,9)
-
- print("-----------")
- for i in range(llist.count):
-  print("i={}, data={}".format(i,llist.get(i)))
-
- llist.deleteAtIndex(4)
+ llist.deleteAtIndex(0)
  
  print("-----------")
  for i in range(llist.count):
