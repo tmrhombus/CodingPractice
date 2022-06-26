@@ -71,11 +71,31 @@ class MyLinkedList:
    last.next = new_node
      
 
-# def addAtIndex(self, index: int, val: int) -> None:
-#     
-#
+ def addAtIndex(self, index: int, val: int) -> None:
+  if(index>self.count):
+   addAtTail(self,val)
+  
+  prevnode = self.head
+  for i in range(index-1):
+   prevnode = prevnode.next
+
+  newnode = Node(val)
+  newnode.next = prevnode.next
+  prevnode.next = newnode
+  #print("index: {}, val: {}".format(index,prevnode.data))
+  
+     
+
 # def deleteAtIndex(self, index: int) -> None:
         
+# def get(self, index: int) -> int:
+#  if(index>self.count):
+#   return None
+#  curnode = self.head
+#  for i in range(index):
+#   curnode = curnode.next
+#   #print("current node: {}".format(curnode.data))
+#  return(curnode.data)
 
 
  
@@ -85,13 +105,19 @@ if __name__=='__main__':
     # Start with the empty list
     llist = MyLinkedList()
  
-    llist.addAtHead(3)
+    llist.addAtHead(5)
     llist.addAtHead(4)
+    llist.addAtHead(3)
+    llist.addAtHead(2)
+    llist.addAtHead(1)
 
-    llist.addAtTail(1)
-    llist.addAtTail(7)
+    for i in range(5):
+     print("i={}, data={}".format(i,llist.get(i)))
 
-    for i in range(3):
+    llist.addAtIndex(2,9)
+
+    print("-----------")
+    for i in range(5):
      print("i={}, data={}".format(i,llist.get(i)))
 
     llist.printList()
