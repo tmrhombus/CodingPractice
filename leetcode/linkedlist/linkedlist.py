@@ -22,9 +22,17 @@ class MyLinkedList:
    print (temp.data)
    temp = temp.next
 
-# def get(self, index: int) -> int:
-#     
-#
+ def get(self, index: int) -> int:
+  if(index>self.count):
+   return None
+  curnode = self.head
+  for i in range(index):
+   curnode = curnode.next
+   #print("current node: {}".format(curnode.data))
+  return(curnode.data)
+  
+     
+
  def addAtHead(self, val: int) -> None:
   # allocate node, add data
   new_node = Node(val)
@@ -82,6 +90,9 @@ if __name__=='__main__':
 
     llist.addAtTail(1)
     llist.addAtTail(7)
+
+    for i in range(3):
+     print("i={}, data={}".format(i,llist.get(i)))
 
     llist.printList()
 
