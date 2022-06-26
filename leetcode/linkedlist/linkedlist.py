@@ -13,8 +13,10 @@ class MyLinkedList:
 
  def __init__(self):
   self.head = None
+  self.count = 0
      
  def printList(self):
+  print("{} elements".format(self.count))
   temp = self.head
   while (temp):
    print (temp.data)
@@ -33,10 +35,15 @@ class MyLinkedList:
   # move head to point to new node
   self.head = new_node
 
+  # add one to count
+  self.count += 1
+
  def addAtTail(self, val: int) -> None:
-  
   # allocate node, add data
   new_node = Node(val)
+
+  # add one to count
+  self.count += 1
 
   # if linked list is empty,
   # this is now the head
