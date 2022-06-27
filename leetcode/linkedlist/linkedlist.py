@@ -23,7 +23,8 @@ class MyLinkedList:
 
  def get(self, index: int) -> int:
   if(index>=self.count):
-   return None
+   return -1 # why is this better???
+   #return None
   curnode = self.head
   if(index==0):
    return curnode.data
@@ -73,7 +74,11 @@ class MyLinkedList:
    return
 
  def addAtIndex(self, index: int, val: int) -> None:
+
   if(index>self.count):
+   return
+
+  if(index==self.count):
    self.addAtTail(val)
    return
   
@@ -114,10 +119,9 @@ if __name__=='__main__':
  # Start with the empty list
  llist = MyLinkedList()
  
- llist.addAtIndex(0,10)
- llist.addAtIndex(0,20)
- llist.addAtIndex(1,30)
+ llist.addAtIndex(1,0)
  llist.get(0)
+
 # llist.addAtHead(4)
 # llist.addAtHead(3)
 # llist.addAtHead(2)
