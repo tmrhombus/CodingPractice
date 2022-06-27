@@ -113,6 +113,18 @@ class MyLinkedList:
    prevnode.next = nextnode
   self.count -= 1
 
+ def reverseList(self) -> None:
+
+  curnode = self.head
+  index = 0
+  while(curnode.next):
+   self.addAtHead(curnode.next)
+
+
+  print("hi")
+  
+
+
 # Code execution starts here
 if __name__=='__main__':
  
