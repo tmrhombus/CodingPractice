@@ -33,7 +33,6 @@ class MyLinkedList:
     #print("current node: {}".format(curnode.data))
    return(curnode.data)
   
-     
  def addAtHead(self, val: int) -> None:
   # allocate node, add data
   new_node = Node(val)
@@ -46,6 +45,7 @@ class MyLinkedList:
 
   # add one to count
   self.count += 1
+  return
 
  def addAtTail(self, val: int) -> None:
   # allocate node, add data
@@ -70,12 +70,17 @@ class MyLinkedList:
     last = last.next
 
    last.next = new_node
-     
+   return
 
  def addAtIndex(self, index: int, val: int) -> None:
   if(index>self.count):
-   addAtTail(self,val)
+   self.addAtTail(val)
+   return
   
+  if(index==0):
+   self.addAtHead(val)
+   return
+
   prevnode = self.head
   for i in range(index-1):
    prevnode = prevnode.next
@@ -109,7 +114,10 @@ if __name__=='__main__':
  # Start with the empty list
  llist = MyLinkedList()
  
- llist.addAtHead(5)
+ llist.addAtIndex(0,10)
+ llist.addAtIndex(0,20)
+ llist.addAtIndex(1,30)
+ llist.get(0)
 # llist.addAtHead(4)
 # llist.addAtHead(3)
 # llist.addAtHead(2)
@@ -124,11 +132,11 @@ if __name__=='__main__':
 # for i in range(llist.count):
 #  print("i={}, data={}".format(i,llist.get(i)))
 
- llist.deleteAtIndex(0)
- 
- print("-----------")
- for i in range(llist.count):
-  print("i={}, data={}".format(i,llist.get(i)))
+# llist.deleteAtIndex(0)
+# 
+# print("-----------")
+# for i in range(llist.count):
+#  print("i={}, data={}".format(i,llist.get(i)))
 
  print("-----------")
  llist.printList()
