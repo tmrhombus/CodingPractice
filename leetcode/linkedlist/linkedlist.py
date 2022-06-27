@@ -22,7 +22,7 @@ class MyLinkedList:
    temp = temp.next
 
  def get(self, index: int) -> int:
-  if(index>self.count):
+  if(index>=self.count):
    return None
   curnode = self.head
   if(index==0):
