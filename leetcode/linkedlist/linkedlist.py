@@ -91,7 +91,7 @@ class MyLinkedList:
   self.count += 1
   
  def deleteAtIndex(self, index: int) -> None:
-  if(index>self.count):
+  if(index>=self.count):
    return
 
   prevnode = self.head
