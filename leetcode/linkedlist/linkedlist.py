@@ -122,17 +122,17 @@ class MyLinkedList:
   # keep going as long as there is something next
   while(curnode.next):
 
+   # get the next two nodes
    nextnode = curnode.next
    overnode = nextnode.next
-   print("curnode: {}, nextnode: {}, overnode: {}".format(curnode.data,nextnode.data,-1))
-   curnode = curnode.next
-#  for index in range(self.count):
-#   print(index)
-#   nextnode = curnode.next
-#   if(curnode.next):
-#    self.addAtHead(curnode.next.data)
-#    self.deleteAtIndex(index+1)
-#    curnode = curnode.next
+   #print("curnode: {}, nextnode: {}, overnode: {}".format(curnode.data,nextnode.data,overnode))
+
+   # point curnode to overnode
+   curnode.next = overnode
+
+   # move nextnode to head
+   self.addAtHead(nextnode.data)
+   self.count -= 1
 
 
 # Code execution starts here
