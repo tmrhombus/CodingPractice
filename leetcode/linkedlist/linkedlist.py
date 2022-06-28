@@ -115,12 +115,24 @@ class MyLinkedList:
 
  def reverseList(self) -> None:
 
+  # start at head
   curnode = self.head
-  for index in range(self.count-1):
-   print(index)
-   self.addAtHead(curnode.next.data)
-   self.deleteAtIndex(index)
+
+  # loop through each node
+  # keep going as long as there is something next
+  while(curnode.next):
+
+   nextnode = curnode.next
+   overnode = nextnode.next
+   print("curnode: {}, nextnode: {}, overnode: {}".format(curnode.data,nextnode.data,-1))
    curnode = curnode.next
+#  for index in range(self.count):
+#   print(index)
+#   nextnode = curnode.next
+#   if(curnode.next):
+#    self.addAtHead(curnode.next.data)
+#    self.deleteAtIndex(index+1)
+#    curnode = curnode.next
 
 
 # Code execution starts here
