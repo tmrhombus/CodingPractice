@@ -1,7 +1,7 @@
 
 import solution as sol
 
-ndigits = 5
+ndigits = 1000
 
 thenum, index = sol.solution(ndigits)
 
