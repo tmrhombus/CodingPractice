@@ -6,7 +6,7 @@ def solution(ndigits):
  index = 2
  while True:
   
-  if (j > 25):
+  if (index > 12):
    break
 
   j = j+i
@@ -15,4 +15,4 @@ def solution(ndigits):
 
   print("i={}, j={}, ind = {}".format(i,j,index))
  
- return 1,1
+ return j,index
