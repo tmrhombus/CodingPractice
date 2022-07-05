@@ -13,7 +13,7 @@ def solution(ndigits):
   index += 1
 
   digits = int(math.log10(j))+1
-  print("i={}, j={}, ndig={}".format(i,j,digits))
+  #print("i={}, j={}, ndig={}".format(i,j,digits))
   
   if (digits >= ndigits):
    break
