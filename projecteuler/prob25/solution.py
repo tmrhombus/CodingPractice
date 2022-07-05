@@ -7,9 +7,6 @@ def solution(ndigits):
  j = 1
  index = 2
  while True:
-  
-  if (index > 12):
-   break
 
   j = j+i
   i = j-i
@@ -17,5 +14,8 @@ def solution(ndigits):
 
   digits = int(math.log10(j))+1
   print("i={}, j={}, ndig={}".format(i,j,digits))
+  
+  if (digits >= ndigits):
+   break
  
  return j,index
