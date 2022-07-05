@@ -1,4 +1,6 @@
 
+import math
+
 def solution(ndigits):
 
  i = 1
@@ -13,6 +15,7 @@ def solution(ndigits):
   i = j-i
   index += 1
 
-  print("i={}, j={}, ind = {}".format(i,j,index))
+  digits = int(math.log10(j))+1
+  print("i={}, j={}, ndig={}".format(i,j,digits))
  
  return j,index
