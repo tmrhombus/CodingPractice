@@ -1,29 +1,48 @@
 
 # Coding Practice
 
-Source code for various algorithm implementations 
+This a repository for practicing various algorithm implementations, with a focus on machine learning  
 
-## kmeans
- c++ implementation of kmeans clustering algorithm 
+## Neural Network - Handwritten Number Recognition
+
+Also known as Multiclass Logistic Regression optimized via Gradient Descent \
+Implemented in Python from scratch without using any ML libraries \
+Three layers: 400/25/10 nodes with sigmoid activations, 94% accuracy
+
+<img src="./MachineLearning/05_NeuralNetwork/output/result.gif" width="800"  />  
+
+ ## Support Vector Machine
+ Optimal Margin Classifier + Kernel Trick = Support Vector Machine \
+ Also known as L1 Norm Soft Margin Support Vector Machine \
+ Shown are scans of decision boundaries for different choices of regularization (C) and scale (λ)  
+
+  <img src="./MachineLearning/04_SupportVectorMachine/output/animation2.gif" width="300"  />   <img src="./MachineLearning/04_SupportVectorMachine/output/animation_ex2.gif" width="300"  /> 
+
+
+ ## Logistic Regression
+   
+  2D feature vectors mapped to 6th order polynomials \
+  Shown with different values of regularization parameter λ (over/under fit)
+  
+  <img src="./MachineLearning/03_LogisticRegression/output/animation_microchips.gif" width="300"  />   <img src="./MachineLearning/03_LogisticRegression/output/microchips_J_convergence.png" width="300"  /> 
+  
+  Linear decision boundary - no feature mapping
+ 
+  <img src="./MachineLearning/03_LogisticRegression/output/animation_testscores.gif" width="300"  /> 
+
+## Clustering Algorithms (unsupervised learning)
+
+### K-Means (implemented in C++)
 
  <img src="./kmeans/plots/animation.gif" width="300"  />
 
-## meanshift
- c++ implementation of the mean shift clustering algorithm
+### Mean Shift (implemented in C++)
   
  <img src="./meanshift/plots2/animation.gif" width="300"  />  <img src="./meanshift/plots/animation.gif" width="300"  />
 
-## maze solver
- python implementation to find the minimum number of steps to complete a maze
- 
- <img src="./mazesolver/outfiles/maze1/animation.gif" width="300">   <img src="./mazesolver/outfiles/maze2/animation.gif" width="300">
 
-## MachineLearning
- CS 229 - Machine Learning, Stanford \
- course by Andrew Ng
- 
- ### Gradient Descent
-  python implementations of Batch Gradient Descent: 
+ ## Gradient Descent
+  Python implementations of Batch Gradient Descent along with cost function 
   
   <img src="./MachineLearning/01_GradientDescent/outfiles/Jplot.png" width="300"  /> 
   
@@ -31,27 +50,14 @@ Source code for various algorithm implementations
   
   <img src="./MachineLearning/01p5_GradientDescent/output/result.gif" width="600"  />  
   
-  ### Logistic Regression
-  2D feature vector (mapped to 6th order polynomial) with linear and nonlinear boundaries \
-  best fit found using gradient descent
-  
+
+## maze solver
+ Python implementation to find the minimum number of steps to complete a maze \
+ Part of the Google FooBar challange
  
-  <img src="./MachineLearning/03_LogisticRegression/output/animation_testscores.gif" width="300"  /> 
-  
-  <img src="./MachineLearning/03_LogisticRegression/output/animation_microchips.gif" width="300"  />   <img src="./MachineLearning/03_LogisticRegression/output/microchips_J_convergence.png" width="300"  /> 
+ <img src="./mazesolver/outfiles/maze1/animation.gif" width="300">   <img src="./mazesolver/outfiles/maze2/animation.gif" width="300">
 
-  ### Support Vector Machine
-  Optimal Margin Classifier + Kernel Trick = Support Vector Machine
-  
-  L1 Norm Soft Margin Support Vector Machine
-
-  <img src="./MachineLearning/04_SupportVectorMachine/output/animation2.gif" width="300"  />   <img src="./MachineLearning/04_SupportVectorMachine/output/animation_ex2.gif" width="300"  /> 
-
-
-### Neural Network - Handwritten Number Recognition
-
-<img src="./MachineLearning/05_NeuralNetwork/output/result.gif" width="800"  />  
-
+# Other projects and algorithm implementations
 
 ## datagenerator
  code to generate fake datasets
