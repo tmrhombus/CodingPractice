@@ -4,9 +4,17 @@ import collections
 
 class Solution:
  def longestConsecutive(self, nums: List[int]) -> int:
-  dict_seqs = {}
 
-  for i in nums:
-   print(i)
+  s = set(nums)
+  longest = 0
 
-  return 1
+  for n in s:
+   thislen = 1
+   if (n-1) not in s:
+    np = n+1
+    while np in s:
+     thislen += 1
+     np += 1
+    longest = max(thislen, longest)
+
+  return longest
