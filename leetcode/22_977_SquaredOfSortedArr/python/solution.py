@@ -5,7 +5,7 @@ import collections
 class Solution:
  def sortedSquares(self, nums: List[int]) -> List[int]:
 
-  if len(nums)==1: return nums[0]**2
+  if len(nums)==1: return [nums[0]**2]
 
   s = len(nums)
   out = s*[0]
@@ -18,7 +18,7 @@ class Solution:
 
 # def sortedSquares(self, nums: List[int]) -> List[int]:
 #
-#  if len(nums)==1: return nums[0]**2
+#  if len(nums)==1: return [nums[0]**2]
 #
 #  s = len(nums)
 #  out = s*[0]
