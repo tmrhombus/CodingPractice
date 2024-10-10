@@ -7,7 +7,7 @@ class Solution:
   l = len(nums)
   if l<3:
    return [[]]
-  
+
   s = sorted(nums)
   
   i = 0
