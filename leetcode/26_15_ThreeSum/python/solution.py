@@ -16,9 +16,9 @@ class Solution:
 
   out = []
   z = 1
-  print(s)
+  #print(s)
   while j != k:
-   print(f"iter: {z}, i={i}, j={j}, k={k}, out: {out}")
+   #print(f"iter: {z}, i={i}, j={j}, k={k}, out: {out}")
    vi = s[i]
    vj = s[j]
    vk = s[k]
