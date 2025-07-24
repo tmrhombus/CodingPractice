@@ -43,7 +43,8 @@ df_raw_rank_per_month = (
     .join(df_countries_months, on=["country", "month"], how="right")
     .fillna(0, subset=["monthly_comment_count"])
     .withColumn("monthly_rank",
-        F.row_number().over( 
+        #F.row_number().over( 
+        F.dense_rank().over( 
             Window.partitionBy("month").orderBy(
                 F.col("monthly_comment_count").desc()
             )
