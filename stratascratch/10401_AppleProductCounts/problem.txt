@@ -1,0 +1,6 @@
+
+https://platform.stratascratch.com/coding/10141-apple-product-counts?code_type=6
+
+Weâre analyzing user data to understand how popular Apple devices are among users who have performed at least one event on the platform. Specifically, we want to measure this popularity across different languages. Count the number of distinct users using Apple devices âlimited to "macbook pro", "iphone 5s", and "ipad air" â and compare it to the total number of users per language.
+
+Present the results with the language, the number of Apple users, and the total number of users for each language. Finally, sort the results so that languages with the highest total user count appear first.
