@@ -1,0 +1,6 @@
+
+https://platform.stratascratch.com/coding/10303-top-percentile-fraud?code_type=6
+
+We want to identify the most suspicious claims in each state. We'll consider the top 5 percentile of claims with the highest fraud scores in each state as potentially fraudulent.
+
+Your output should include the policy number, state, claim cost, and fraud score.
