@@ -1,0 +1,25 @@
+
+# Import your libraries
+import pyspark
+import pyspark.sql.functions as F
+
+df_session_lengths = (
+    user_sessions
+    .withColumn("session_length_s", 
+        (F.col("session_endtime") - F.col("session_starttime")).cast("long")
+    )
+    .select("session_id", "session_length_s")
+)
+
+df_time_viewed = (
+    post_views
+    .join(df_session_lengths, on="session_id", how="inner")
+    .withColumn("time_viewed_s", F.col("perc_viewed") * F.col("session_length_s") / 100)
+    .groupBy("post_id")
+    .agg(
+        F.sum("time_viewed_s").alias("total_time_viewed_s")    
+    )
+    .where(F.col("total_time_viewed_s") > 5)
+)
+
+df_time_viewed.toPandas()
