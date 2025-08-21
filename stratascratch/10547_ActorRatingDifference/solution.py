@@ -1,3 +1,4 @@
+
 # Import your libraries
 import pyspark
 import pyspark.sql.functions as F
@@ -14,10 +15,7 @@ df_nfilms = (
 )
 
 df_avg_rating = (
-    actor_rating_shift
-    .join(df_nfilms.select("nfilm", "actor_name", "film_title"),
-        on=["actor_name", "film_title"], how="inner"
-    )
+    df_nfilms
     .where(F.col("nfilm") != 1)
     .groupBy("actor_name")
     .agg(
@@ -43,4 +41,3 @@ df_out = (
 
 cols_out = ["actor_name", "most_recent_rating",  "avg_lifetime_rating", "rating_difference"]
 df_out.select(cols_out).toPandas()
-
