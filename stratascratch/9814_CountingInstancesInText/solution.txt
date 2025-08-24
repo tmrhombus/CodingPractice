@@ -1,0 +1,27 @@
+
+import pyspark.sql.functions as F
+from pyspark.sql.window import Window
+
+validwords = ["bull", "bear"]
+df_out = (
+    google_file_store
+    .withColumn("word", 
+        F.explode(
+            F.split(
+                F.lower(
+                    F.col("contents")    
+                ), r"\W+"    
+            )    
+        )
+    )
+    .where(F.col("word").isin(validwords))
+    .groupBy("word")
+    .agg(
+        F.count(F.col("filename")).alias("counts")
+    )
+)
+
+df_out.toPandas()
+
+
+
