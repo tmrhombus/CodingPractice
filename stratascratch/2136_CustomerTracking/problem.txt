@@ -1,0 +1,6 @@
+
+https://www.adesso.com/product/cybertrack-h4-1080p-hd-usb-webcam-with-built-in-microphone/
+
+Given the users' sessions logs on a particular day, calculate how many hours each user was active that day.
+
+Note: The session starts when state=1 and ends when state=0.
