@@ -1,0 +1,4 @@
+
+https://platform.stratascratch.com/coding/2054-consecutive-days?code_type=6
+
+Find all the users who were active for 3 consecutive days or more.
